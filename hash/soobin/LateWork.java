@@ -23,7 +23,13 @@ public class LateWork {
         List<Map.Entry<String, String>> remained = hash.entrySet().stream()
                 .filter(entry -> entry.getValue().equals("enter"))
                 .collect(Collectors.toList());
-        Collections.sort(remained, new CustomComparator());
+        Comparator<Map.Entry<String, String>> comparator = new Comparator<Map.Entry<String, String>>() {
+            @Override
+            public int compare(Map.Entry<String, String> o1, Map.Entry<String, String> o2) {
+                return o2.getKey().compareTo(o1.getKey());
+            }
+        };
+        Collections.sort(remained, comparator);
 
         for(Map.Entry<String, String> remain : remained) {
             bw.write(remain.getKey());
@@ -34,13 +40,5 @@ public class LateWork {
 
     public static void main(String[] args) throws Exception {
         solution();
-    }
-}
-
-class CustomComparator implements Comparator<Map.Entry<String, String>> {
-
-    @Override
-    public int compare(Map.Entry<String, String> o1, Map.Entry<String, String> o2) {
-        return o2.getKey().compareTo(o1.getKey());
     }
 }
