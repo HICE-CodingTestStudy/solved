@@ -1,20 +1,9 @@
-from collections import defaultdict
+from collections import Counter
 
 
 def solution(participant, completion):
     answer = ''
     
-    hash_table = defaultdict(int)
+    answer = Counter(participant)-Counter(completion) # 일반적인 dictioanry는 뺄셈이 안되지만, Counter는 뺄셈이 가능함!!!⭐⭐⭐⭐⭐
     
-    for p in participant:
-        hash_table[p] += 1
-    
-    for c in completion:
-        hash_table[c] -= 1
-    
-    for key, value in hash_table.items():
-        if value > 0:
-            answer = key
-            break
-    
-    return answer
+    return list(answer.keys())[0] # dictionary의 key 값은 not subscriptable -> list로 변경 후 주소 값 가져오기
