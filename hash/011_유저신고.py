@@ -16,9 +16,8 @@ def solution(id_list, report, k):
         repFrom, repTo = rep.split()
         cntDict[repTo] += 1
         repDict[repFrom].append(repTo)
-    # print("myDict:", cntDict, repDict)
 
-    # 검사
+    # 신고횟수 k 이상인지 검사
     for id in id_list:
         sum = 0
         for rep in repDict[id]:
