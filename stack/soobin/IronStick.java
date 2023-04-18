@@ -1,14 +1,15 @@
 package soobin;
 
-import java.util.Scanner;
+import java.io.*;
 import java.util.Stack;
 
 public class IronStick {
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         Stack<Character> stack = new Stack<>();
-        String str = sc.next();
+        String str = br.readLine();
         int sum = 0;
 
         stack.push(str.charAt(0));
@@ -26,6 +27,9 @@ public class IronStick {
             sum = prev ? sum + stack.size() : sum + 1;
             prev = false;
         }
-        System.out.println(sum);
+
+        bw.write(String.valueOf(sum));
+        bw.newLine();
+        bw.flush();
     }
 }
