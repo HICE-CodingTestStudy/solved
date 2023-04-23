@@ -58,12 +58,13 @@ public class Bracket {
             if(peek instanceof Character && isPair((Character) peek, current)) {
                 stackOperation(stack.empty(), getType(current));
             } else if (peek instanceof Integer) {
-                int next = 0;
-                if(stack.peek() instanceof Integer) next = (Integer) stack.pop();
+                int value = (Integer) peek;
+                while(stack.peek() instanceof  Integer)
+                    value += (Integer) stack.pop();
+
                 if(!isPair((Character) stack.peek(), current)) break;
                 stack.pop();
 
-                int value = next == 0 ? (Integer) peek : (Integer) peek + next;
                 value *= getType(current);
                 stackOperation(stack.empty(), value);
             } else { sum =0; break; }
