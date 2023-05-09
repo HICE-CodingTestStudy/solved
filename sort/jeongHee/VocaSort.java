@@ -5,6 +5,9 @@ import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class VocaSort {
+    //https://www.acmicpc.net/problem/1181
+    //단어정렬
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
