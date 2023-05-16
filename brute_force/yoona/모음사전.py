@@ -1,22 +1,17 @@
+from itertools import product
+
+# product는 중복순열 product(list, repeat = 몇 개로 이루어진 순열?)
+
+
 def solution(word):
     answer = 0
-    order = 0
+    alphabet = ["A", "E", "I", "O", "U"]
+    tmp = []
 
-    def permutation(choosed):
-        nonlocal order, answer
+    for i in range(1, 6):
+        for j in product(alphabet, repeat=i):
+            tmp.append("".join(list(j)))
 
-        if "".join(choosed) == word:
-            answer = order
-
-        if len(choosed) == 5:
-            return
-
-        for alphabet in ["A", "E", "I", "O", "U"]:
-            order += 1
-            choosed.append(alphabet)
-            permutation(choosed)
-            choosed.pop()
-
-    choosed = []
-    permutation(choosed)
+    tmp.sort()
+    answer = tmp.index(word) + 1
     return answer
