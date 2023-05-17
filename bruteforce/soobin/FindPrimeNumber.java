@@ -17,17 +17,14 @@ public class FindPrimeNumber {
 
         for (int i = 0; i < numChars.length; i++) {
             if (!used[i]) {
-                generated += String.valueOf(numChars[i]);
                 used[i] = true;
-                generate(generated, used, length);
+                generate(generated + String.valueOf(numChars[i]), used, length);
                 used[i] = false;
-                generated = "";
             }
         }
     }
 
     private static boolean isPrime(int number) {
-        System.out.println(number);
         if (number == 1 || number == 0) return false;
 
         for (int i = 2; i*i <= number; i++)
@@ -48,7 +45,6 @@ public class FindPrimeNumber {
     public static void main(String[] args) {
         String numbers = "223";
         System.out.println(solution(numbers));
-        System.out.println(primes);
     }
 
 }
