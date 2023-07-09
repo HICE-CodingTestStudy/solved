@@ -68,3 +68,10 @@ SELECT MEMBER_ID, MEMBER_NAME, GENDER, DATE_FORMAT(DATE_OF_BIRTH,"%Y-%m-%d") as 
 from MEMBER_PROFILE
 where TLNO != "NULL" and GENDER = 'W' and DATE_OF_BIRTH like "%-03-%"
 order by MEMBER_ID;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/164673
+//조건에 부합하는 중고거래 댓글 조회하기
+SELECT TITLE, b.BOARD_ID, REPLY_ID, r.WRITER_ID, r.CONTENTS, DATE_FORMAT(r.CREATED_DATE,"%Y-%m-%d") as CREATED_DATE
+from USED_GOODS_BOARD b inner join USED_GOODS_REPLY r on b.BOARD_ID = r.BOARD_ID
+where b.CREATED_DATE like "2022-10-%"
+order by r.CREATED_DATE , b.TITLE;
