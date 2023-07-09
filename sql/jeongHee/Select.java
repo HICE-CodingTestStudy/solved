@@ -55,9 +55,3 @@ SELECT count(USER_ID) as USERS
 from USER_INFO
 where AGE>=20 and AGE<=29 and JOINED LIKE "2021%";
 
-//https://school.programmers.co.kr/learn/courses/30/lessons/131115
-//가격이 제일 비싼 식품의 정보 출력하기
-SELECT *
-from FOOD_PRODUCT
-order by PRICE desc
-limit 1;
