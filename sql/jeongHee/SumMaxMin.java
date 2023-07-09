@@ -16,3 +16,8 @@ limit 1;
 //가장 비싼 상품 구하기
 SELECT max(PRICE) as MAX_PRICE
 from PRODUCT;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/59038
+//최솟값 구하기
+SELECT MIN(DATETIME) as 시간
+from ANIMAL_INS;
