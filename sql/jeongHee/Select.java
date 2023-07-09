@@ -110,3 +110,9 @@ SELECT PT_NAME, PT_NO ,GEND_CD, AGE, IFNULL(TLNO, "NONE") as TLNO
 from PATIENT
 where AGE <=12 and GEND_CD = "W"
 order by AGE desc, PT_NAME;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/133024
+//인기있는 아이스크림
+SELECT FLAVOR
+from FIRST_HALF
+order by TOTAL_ORDER desc, SHIPMENT_ID;
