@@ -103,3 +103,10 @@ order by a.TOTAL_ORDER desc;
 SELECT ROUND(AVG(DAILY_FEE),0) as AVERAGE_FEE
 from CAR_RENTAL_COMPANY_CAR
 where CAR_TYPE = "SUV";
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/132201
+//12세 이하인 여자 환자 목록 출력하기
+SELECT PT_NAME, PT_NO ,GEND_CD, AGE, IFNULL(TLNO, "NONE") as TLNO
+from PATIENT
+where AGE <=12 and GEND_CD = "W"
+order by AGE desc, PT_NAME;
