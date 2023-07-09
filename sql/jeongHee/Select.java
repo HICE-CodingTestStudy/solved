@@ -29,3 +29,9 @@ where INTAKE_CONDITION = "SICK";
 SELECT ANIMAL_ID, NAME
 from ANIMAL_INS
 where INTAKE_CONDITION != "Aged";
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/59403
+//동물의 아이디와 이름
+SELECT ANIMAL_ID, NAME
+from ANIMAL_INS
+order by ANIMAL_ID asc;
