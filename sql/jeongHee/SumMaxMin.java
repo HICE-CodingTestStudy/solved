@@ -11,3 +11,8 @@ SELECT DATETIME as 시간
 from ANIMAL_INS
 order by DATETIME desc
 limit 1;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/131697
+//가장 비싼 상품 구하기
+SELECT max(PRICE) as MAX_PRICE
+from PRODUCT;
