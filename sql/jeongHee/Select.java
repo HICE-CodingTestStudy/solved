@@ -90,3 +90,10 @@ SELECT BOOK_ID, DATE_FORMAT(PUBLISHED_DATE,"%Y-%m-%d") as PUBLISHED_DATE
 from BOOK
 where CATEGORY = "인문" and PUBLISHED_DATE like "2021-%"
 order by PUBLISHED_DATE;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/133025
+//과일로 만든 아이스크림 고르기
+SELECT a.FLAVOR
+from FIRST_HALF a inner join ICECREAM_INFO b on a.FLAVOR = b.FLAVOR
+where a.TOTAL_ORDER >=3000 and b.INGREDIENT_TYPE like "fruit%"
+order by a.TOTAL_ORDER desc;
