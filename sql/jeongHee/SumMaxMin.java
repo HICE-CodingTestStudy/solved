@@ -26,3 +26,9 @@ from ANIMAL_INS;
 //https://school.programmers.co.kr/learn/courses/30/lessons/59406
 SELECT count(ANIMAL_ID) as count
 from ANIMAL_INS;
+
+//중복 제거하기
+//https://school.programmers.co.kr/learn/courses/30/lessons/59408
+SELECT count(distinct NAME) as count
+from ANIMAL_INS
+where NAME != "NULL"
