@@ -83,3 +83,10 @@ from REST_INFO a inner join REST_REVIEW b on a.REST_ID = b.REST_ID
 where a.ADDRESS like "서울%"
 group by REST_ID
 order by ROUND(avg(b.REVIEW_SCORE),3) desc, a.FAVORITES desc;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/144853
+//조건에 맞는 도서 리스트 출력하기
+SELECT BOOK_ID, DATE_FORMAT(PUBLISHED_DATE,"%Y-%m-%d") as PUBLISHED_DATE
+from BOOK
+where CATEGORY = "인문" and PUBLISHED_DATE like "2021-%"
+order by PUBLISHED_DATE;
