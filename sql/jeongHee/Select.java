@@ -17,3 +17,9 @@ order by ANIMAL_ID asc
 SELECT NAME, DATETIME
 from ANIMAL_INS
 order by ANIMAL_ID desc;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/59036
+//아픈 동물 찾기
+SELECT ANIMAL_ID, NAME
+from ANIMAL_INS
+where INTAKE_CONDITION = "SICK";
