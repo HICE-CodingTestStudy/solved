@@ -55,3 +55,9 @@ SELECT count(USER_ID) as USERS
 from USER_INFO
 where AGE>=20 and AGE<=29 and JOINED LIKE "2021%";
 
+//https://school.programmers.co.kr/learn/courses/30/lessons/132203
+//흉부외과 또는 일반외과 의사 목록 출력하기
+SELECT DR_NAME, DR_ID, MCDP_CD, DATE_FORMAT(HIRE_YMD,"%Y-%m-%d")
+from DOCTOR
+where MCDP_CD = "CS" or MCDP_CD = "GS"
+order by HIRE_YMD desc, DR_NAME asc;
