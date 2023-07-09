@@ -123,3 +123,14 @@ SELECT USER_ID, PRODUCT_ID
 from ONLINE_SALE
 group by USER_ID,PRODUCT_ID having count(ONLINE_SALE_ID)>=2
 order by USER_ID, PRODUCT_ID desc;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/131537
+//오프라인 온라인 판매 데이터 통합하기
+SELECT DATE_FORMAT(SALES_DATE,"%Y-%m-%d") as SALES_DATE, PRODUCT_ID, USER_ID, SALES_AMOUNT
+from ONLINE_SALE
+where SALES_DATE like "2022-03%"
+union all
+SELECT DATE_FORMAT(SALES_DATE,"%Y-%m-%d") as SALES_DATE, PRODUCT_ID, NULL USER_ID, SALES_AMOUNT
+from OFFLINE_SALE
+where SALES_DATE like "2022-03%"
+order by SALES_DATE, PRODUCT_ID, USER_ID;
