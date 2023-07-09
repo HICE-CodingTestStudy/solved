@@ -48,3 +48,9 @@ SELECT NAME
 from ANIMAL_INS
 order by DATETIME asc
 limit 1;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/1315
+//조건에 맞는 회원 수 구하기
+SELECT count(USER_ID) as USERS
+from USER_INFO
+where AGE>=20 and AGE<=29 and JOINED LIKE "2021%";
