@@ -75,3 +75,11 @@ SELECT TITLE, b.BOARD_ID, REPLY_ID, r.WRITER_ID, r.CONTENTS, DATE_FORMAT(r.CREAT
 from USED_GOODS_BOARD b inner join USED_GOODS_REPLY r on b.BOARD_ID = r.BOARD_ID
 where b.CREATED_DATE like "2022-10-%"
 order by r.CREATED_DATE , b.TITLE;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/131118
+//서울에 위치한 식당 목록 출력하기
+SELECT a.REST_ID, a.REST_NAME, a.FOOD_TYPE, a.FAVORITES, a.ADDRESS, ROUND(avg(b.REVIEW_SCORE),2) as SCORE
+from REST_INFO a inner join REST_REVIEW b on a.REST_ID = b.REST_ID
+where a.ADDRESS like "서울%"
+group by REST_ID
+order by ROUND(avg(b.REVIEW_SCORE),3) desc, a.FAVORITES desc;
