@@ -21,3 +21,8 @@ from PRODUCT;
 //최솟값 구하기
 SELECT MIN(DATETIME) as 시간
 from ANIMAL_INS;
+
+//동물 수 구하기
+//https://school.programmers.co.kr/learn/courses/30/lessons/59406
+SELECT count(ANIMAL_ID) as count
+from ANIMAL_INS;
