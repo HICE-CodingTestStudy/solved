@@ -42,3 +42,15 @@ from CAR_RENTAL_COMPANY_CAR
 where OPTIONS like "%시트%"
 group by CAR_TYPE
 order by CAR_TYPE
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/131123
+//즐겨찾기가 가장 많은 식당 정보 출력하기
+SELECT FOOD_TYPE, REST_ID, REST_NAME, FAVORITES
+from REST_INFO
+where FAVORITES in (
+SELECT max(FAVORITES)
+from REST_INFO
+group by FOOD_TYPE
+)
+group by FOOD_TYPE
+order by FOOD_TYPE desc;
