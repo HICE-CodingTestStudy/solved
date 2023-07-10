@@ -63,3 +63,11 @@ where b.STATUS = "DONE"
 group by USER_ID
 having TOTAL_SALES >=700000
 order by TOTAL_SALES;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/144855
+//카테고리 별 도서 판매량 집계하기
+SELECT b.CATEGORY, sum(s.SALES) as TOTAL_SALES
+from BOOK b inner join BOOK_SALES s on b.BOOK_ID = s.BOOK_ID
+where s.SALES_DATE like "2022-01%"
+group by b.CATEGORY
+order by b.CATEGORY
