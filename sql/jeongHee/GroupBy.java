@@ -110,3 +110,13 @@ SELECT ANIMAL_TYPE, count(*) as count
 from ANIMAL_INS
 group by ANIMAL_TYPE
 order by ANIMAL_TYPE;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/59041
+//동명 동물 수 찾기
+select * from (
+SELECT NAME, count(*) as COUNT
+from ANIMAL_INS
+group by NAME ) c
+where c.COUNT >=2 and NAME != ""
+order by c.NAME;
+
