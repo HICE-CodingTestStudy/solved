@@ -18,3 +18,9 @@ SELECT ANIMAL_ID
 from ANIMAL_INS
 where NAME is not null
 order by ANIMAL_ID;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/59410
+//NULL 처리하기
+SELECT ANIMAL_TYPE, ifnull(NAME,"No name"), SEX_UPON_INTAKE
+from ANIMAL_INS
+order by ANIMAL_ID;
