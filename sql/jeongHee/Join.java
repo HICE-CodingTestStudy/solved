@@ -16,3 +16,16 @@ SELECT b.BOOK_ID, a.AUTHOR_NAME, DATE_FORMAT(b.PUBLISHED_DATE,"%Y-%m-%d") as PUB
 from BOOK b inner join AUTHOR a on b.AUTHOR_ID = a.AUTHOR_ID
 where b.CATEGORY = "경제"
 order by PUBLISHED_DATE;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/133027
+//주문량이 많은 아이스크림들 조회하기
+select c.FLAVOR
+from(
+SELECT *
+from FIRST_HALF
+union all
+select *
+from JULY) c
+group by c.FLAVOR
+order by sum(c.TOTAL_ORDER) desc
+limit 3
