@@ -108,3 +108,10 @@ else "O"
 end as 중성화
 from ANIMAL_INS
 order by ANIMAL_ID;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/59047
+//이름에 el이 들어가는 동물 찾기
+SELECT ANIMAL_ID,NAME
+from ANIMAL_INS
+where (NAME like "%el%" or NAME like "%El%" or NAME like "%eL%" or NAME like "%EL%") and ANIMAL_TYPE = "Dog"
+order by NAME;
