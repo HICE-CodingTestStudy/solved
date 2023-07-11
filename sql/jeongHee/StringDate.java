@@ -15,3 +15,15 @@ group by CAR_ID
 ) a
 where round(a.RENT/a.CNT+1,1) >=7
 order by AVERAGE_DURATION desc, a.CAR_ID desc;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/164672
+//조건에 부합하는 중고거래 상태 조회하기
+SELECT BOARD_ID,WRITER_ID,TITLE,PRICE,
+case STATUS
+when "DONE" then "거래완료"
+when "SALE" then "판매중"
+else "예약중"
+end as STATUS
+from USED_GOODS_BOARD
+where CREATED_DATE = "2022-10-05"
+order by BOARD_ID desc;
