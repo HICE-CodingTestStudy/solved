@@ -24,3 +24,9 @@ order by ANIMAL_ID;
 SELECT ANIMAL_TYPE, ifnull(NAME,"No name"), SEX_UPON_INTAKE
 from ANIMAL_INS
 order by ANIMAL_ID;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/131528
+//나이 정보가 없는 회원 수 구하기
+SELECT count(*) as USERS
+from USER_INFO
+where AGE is null;
