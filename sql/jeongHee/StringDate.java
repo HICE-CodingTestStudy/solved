@@ -98,3 +98,13 @@ SELECT ANIMAL_ID,NAME,SEX_UPON_INTAKE
 from ANIMAL_INS
 where NAME in ('Lucy', 'Ella', 'Pickle', 'Rogan', 'Sabrina', 'Mitty')
 order by ANIMAL_ID
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/59409
+//중성화 여부 파악하기
+SELECT ANIMAL_ID,NAME,
+case
+when SEX_UPON_INTAKE like "Intact%" then "X"
+else "O"
+end as 중성화
+from ANIMAL_INS
+order by ANIMAL_ID;
