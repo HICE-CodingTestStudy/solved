@@ -41,3 +41,13 @@ group by PRODUCT_ID
 ) o
 on p.PRODUCT_ID = o.PRODUCT_ID
 order by TOTAL_SALES desc, p.PRODUCT_ID
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/59042
+//없어진 기록 찾기
+SELECT ANIMAL_ID, NAME
+from ANIMAL_OUTS
+where ANIMAL_ID not in (
+select ANIMAL_ID
+from ANIMAL_INS
+)
+order by ANIMAL_ID;
