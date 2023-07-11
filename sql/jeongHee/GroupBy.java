@@ -127,3 +127,18 @@ from ANIMAL_OUTS
 where hour(DATETIME) between 9 and 19
 group by hour(DATETIME)
 order by HOUR;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/59413
+//입양 시각 구하기(2)
+with recursive HOUR_RANGE as(
+select 0 as HOUR
+union all
+select HOUR+1 from HOUR_RANGE
+where HOUR<23
+)
+select r.HOUR, if(isnull(a.COUNT),"0",a.COUNT) as COUNT
+from HOUR_RANGE r left join (SELECT hour(DATETIME) as HOUR , count(*) as COUNT
+from ANIMAL_OUTS
+group by hour(DATETIME)) a on r.HOUR = a.HOUR
+group by r.HOUR
+order by r.HOUR
