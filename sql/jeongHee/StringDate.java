@@ -35,3 +35,14 @@ from APPOINTMENT a inner join PATIENT p on a.PT_NO = p.PT_NO
 inner join DOCTOR d on a.MDDR_ID = d.DR_ID
 where a.MCDP_CD = "CS" and a.APNT_YMD like "2022-04-13%" and a.APNT_CNCL_YMD is null
 order by a.APNT_YMD
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/131113
+//조건별로 분류하여 주문상태 출력하기
+SELECT ORDER_ID,PRODUCT_ID, DATE_FORMAT(OUT_DATE, "%Y-%m-%d") as OUT_DATE,
+case
+when OUT_DATE <= "2022-05-01" then "출고완료"
+when OUT_DATE > "2022-05-01" then "출고대기"
+else "출고미정"
+end as 출고여부
+from FOOD_ORDER
+order by ORDER_ID;
