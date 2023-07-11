@@ -46,3 +46,15 @@ else "출고미정"
 end as 출고여부
 from FOOD_ORDER
 order by ORDER_ID;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/164671
+//조회수가 가장 많은 중고거래 게시판의 첨부파일 조회하기
+SELECT concat("/home/grep/src/",BOARD_ID,"/",FILE_ID,FILE_NAME,FILE_EXT) as FILE_PATH
+from USED_GOODS_FILE
+where BOARD_ID = (
+select BOARD_ID
+from USED_GOODS_BOARD
+order by VIEWS desc
+limit 1
+)
+order by FILE_ID desc;
