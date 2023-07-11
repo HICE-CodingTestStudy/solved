@@ -142,3 +142,11 @@ from ANIMAL_OUTS
 group by hour(DATETIME)) a on r.HOUR = a.HOUR
 group by r.HOUR
 order by r.HOUR
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/131532
+//년, 월, 성별 별 상품 구매 회원 수 구하기
+SELECT year(s.SALES_DATE) as YEAR, month(s.SALES_DATE) as MONTH, u.GENDER as GENDER, count(distinct u.USER_ID) as USERS
+from USER_INFO u inner join ONLINE_SALE s on u.USER_ID = s.USER_ID
+where u.GENDER is not null
+group by YEAR, MONTH, GENDER
+order by year(s.SALES_DATE), month(s.SALES_DATE), u.GENDER
