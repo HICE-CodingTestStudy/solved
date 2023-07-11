@@ -88,3 +88,18 @@ from CAR_RENTAL_COMPANY_RENTAL_HISTORY
 group by CAR_ID,AVAILABILITY) p
 group by p.CAR_ID
 order by p.CAR_ID desc;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/151139
+//대여 횟수가 많은 자동차들의 월별 대여 횟수 구하기
+select * from (
+select month(START_DATE) as MONTH, CAR_ID, count(*) as RECORDS from CAR_RENTAL_COMPANY_RENTAL_HISTORY
+where CAR_ID in(
+select c.CAR_ID as CAR_ID from
+( SELECT CAR_ID, count(case when START_DATE>="2022-08-01" and START_DATE<="2022-10-31" then 1 end) as RENT_COUNT , START_DATE
+from CAR_RENTAL_COMPANY_RENTAL_HISTORY
+group by CAR_ID ) c
+where c.RENT_COUNT >= 5)
+group by month(START_DATE), CAR_ID
+) d
+where d.RECORDS>0
+order by d.MONTH, d.CAR_ID desc;
