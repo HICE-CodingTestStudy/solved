@@ -58,3 +58,14 @@ SELECT i.ANIMAL_ID, i.NAME
 from ANIMAL_INS i inner join ANIMAL_OUTS o on i.ANIMAL_ID = o.ANIMAL_ID
 where i.DATETIME>o.DATETIME
 order by i.DATETIME
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/59044
+//오랜 기간 보호한 동물(1)
+SELECT NAME, DATETIME
+from ANIMAL_INS
+where ANIMAL_ID not in (
+select ANIMAL_ID
+from ANIMAL_OUTS
+)
+order by DATETIME
+limit 3;
