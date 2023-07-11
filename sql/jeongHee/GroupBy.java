@@ -150,3 +150,10 @@ from USER_INFO u inner join ONLINE_SALE s on u.USER_ID = s.USER_ID
 where u.GENDER is not null
 group by YEAR, MONTH, GENDER
 order by year(s.SALES_DATE), month(s.SALES_DATE), u.GENDER
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/131530
+//가격대 별 상품 개수 구하기
+SELECT floor(PRICE/10000)*10000 as PRICE_GROUP, count(*) as PRODUCTS
+from PRODUCT
+group by PRICE_GROUP
+order by PRICE_GROUP
