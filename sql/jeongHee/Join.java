@@ -9,3 +9,10 @@ group by MEMBER_ID
 order by count(*) desc
 limit 1 )
 order by REVIEW_DATE, r.REVIEW_TEXT;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/144854
+//조건에 맞는 도서와 저자 리스트 출력하기
+SELECT b.BOOK_ID, a.AUTHOR_NAME, DATE_FORMAT(b.PUBLISHED_DATE,"%Y-%m-%d") as PUBLISHED_DATE
+from BOOK b inner join AUTHOR a on b.AUTHOR_ID = a.AUTHOR_ID
+where b.CATEGORY = "경제"
+order by PUBLISHED_DATE;
