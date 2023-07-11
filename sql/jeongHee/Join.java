@@ -69,3 +69,10 @@ from ANIMAL_OUTS
 )
 order by DATETIME
 limit 3;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/59045#fn1
+//보호소에서 중성화한 동물
+SELECT i.ANIMAL_ID, i.ANIMAL_TYPE, i.NAME
+from ANIMAL_INS i inner join ANIMAL_OUTS o on i.ANIMAL_ID = o.ANIMAL_ID
+where i.SEX_UPON_INTAKE like "Intact%" and (o.SEX_UPON_OUTCOME like "Spayed%" or o.SEX_UPON_OUTCOME like "Neutered%")
+order by i.ANIMAL_ID
