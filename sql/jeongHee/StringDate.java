@@ -69,3 +69,10 @@ end as RENT_TYPE
 from CAR_RENTAL_COMPANY_RENTAL_HISTORY
 where START_DATE like "2022-09%"
 order by HISTORY_ID desc;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/157343
+//특정 옵션이 포함된 자동차 리스트 구하기
+SELECT CAR_ID,CAR_TYPE,DAILY_FEE,OPTIONS
+from CAR_RENTAL_COMPANY_CAR
+where OPTIONS like "%네비%"
+order by CAR_ID desc;
