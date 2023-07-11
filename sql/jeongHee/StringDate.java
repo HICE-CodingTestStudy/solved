@@ -115,3 +115,14 @@ SELECT ANIMAL_ID,NAME
 from ANIMAL_INS
 where (NAME like "%el%" or NAME like "%El%" or NAME like "%eL%" or NAME like "%EL%") and ANIMAL_TYPE = "Dog"
 order by NAME;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/59411
+//오랜 기간 보호한 동물(2)
+SELECT a.ANIMAL_ID,a.NAME
+from ANIMAL_INS a inner join ANIMAL_OUTS b on a.ANIMAL_ID = b.ANIMAL_ID
+where a.ANIMAL_ID in (
+select ANIMAL_ID
+from ANIMAL_OUTS
+)
+order by datediff(b.DATETIME,a.DATETIME) desc
+limit 2;
