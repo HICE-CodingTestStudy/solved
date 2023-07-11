@@ -79,3 +79,12 @@ from APPOINTMENT
 where APNT_YMD like "2022-05%"
 group by MCDP_CD
 order by 5월예약건수, 진료과코드;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/157340
+//자동차 대여 기록에서 대여중/ 대여 가능 여부 구분하기
+SELECT p.CAR_ID, if(count(case when p.AVAILABILITY="대여중" then 1 end)>0,"대여중","대여 가능") as AVAILABILITY
+from (SELECT CAR_ID, if(START_DATE<="2022-10-16"and"2022-10-16"<=END_DATE, "대여중", "대여 가능") as AVAILABILITY
+from CAR_RENTAL_COMPANY_RENTAL_HISTORY
+group by CAR_ID,AVAILABILITY) p
+group by p.CAR_ID
+order by p.CAR_ID desc;
