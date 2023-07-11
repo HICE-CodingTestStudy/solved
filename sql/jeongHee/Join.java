@@ -86,3 +86,22 @@ from OFFLINE_SALE
 group by PRODUCT_ID
 ) b on a.PRODUCT_ID = b.PRODUCT_ID
 order by SALES desc, a.PRODUCT_CODE ;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/131534
+//상품을 구매한 회원 비율 구하기
+select year(SALES_DATE) as YEAR, month(SALES_DATE) as MONTH, count(distinct USER_ID) as PUCHASED_USERS, round(count(distinct USER_ID)/a.CNT,1) as PUCHASED_RATIO
+from ONLINE_SALE, (
+select count(distinct USER_ID) as CNT
+from USER_INFO
+where JOINED like "2021%"
+) a
+where USER_ID in(
+SELECT USER_ID
+from USER_INFO
+where USER_ID in (
+select USER_ID
+from ONLINE_SALE
+) and JOINED like "2021%"
+)
+group by YEAR, MONTH
+order by YEAR, MONTH
