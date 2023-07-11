@@ -58,3 +58,14 @@ order by VIEWS desc
 limit 1
 )
 order by FILE_ID desc;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/151138
+//자동차 대여 기록에서 장기/단기 대여 구분하기
+SELECT HISTORY_ID,CAR_ID, DATE_FORMAT(START_DATE, "%Y-%m-%d") as START_DATE,DATE_FORMAT(END_DATE, "%Y-%m-%d") as END_DATE,
+case
+when datediff(END_DATE,START_DATE)+1 >=30 then "장기 대여"
+else "단기 대여"
+end as RENT_TYPE
+from CAR_RENTAL_COMPANY_RENTAL_HISTORY
+where START_DATE like "2022-09%"
+order by HISTORY_ID desc;
