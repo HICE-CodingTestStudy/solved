@@ -29,3 +29,15 @@ from JULY) c
 group by c.FLAVOR
 order by sum(c.TOTAL_ORDER) desc
 limit 3
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/131117
+//5월 식품들의 총매출 조회하기
+SELECT p.PRODUCT_ID, p.PRODUCT_NAME, p.PRICE*o.AMOUNT as TOTAL_SALES
+from FOOD_PRODUCT p inner join (
+select PRODUCT_ID, sum(AMOUNT) as AMOUNT, PRODUCE_DATE
+from FOOD_ORDER
+where PRODUCE_DATE like "2022-05%"
+group by PRODUCT_ID
+) o
+on p.PRODUCT_ID = o.PRODUCT_ID
+order by TOTAL_SALES desc, p.PRODUCT_ID
