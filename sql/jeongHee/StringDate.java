@@ -76,3 +76,18 @@ SELECT CAR_ID,CAR_TYPE,DAILY_FEE,OPTIONS
 from CAR_RENTAL_COMPANY_CAR
 where OPTIONS like "%네비%"
 order by CAR_ID desc;
+
+//https://school.programmers.co.kr/learn/courses/30/lessons/164670
+//조건에 맞는 사용자 정보 조회하기
+select USER_ID,NICKNAME,concat(CITY," ",STREET_ADDRESS1," ",STREET_ADDRESS2) as 전체주소,concat(substring(TLNO,1,3),"-",substring(TLNO,4,4),"-",substring(TLNO,8,4)) as 전화번호
+from USED_GOODS_USER
+where USER_ID in (
+select WRITER_ID as USER_ID
+from (
+SELECT WRITER_ID, count(*) as CNT
+from USED_GOODS_BOARD
+group by WRITER_ID
+) c
+where c.CNT >=3
+)
+order by USER_ID desc;
