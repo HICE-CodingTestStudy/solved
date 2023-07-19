@@ -22,10 +22,10 @@ def union(u, v):
         temp = v
         v = u
         u = temp
-    parent[v] = u
-    height[v] = 0
     if height[v] == height[u]:
         height[u] += 1
+    parent[v] = u
+    height[v] = 0
     return True
 
 

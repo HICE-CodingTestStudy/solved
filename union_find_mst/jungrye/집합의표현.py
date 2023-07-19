@@ -25,10 +25,10 @@ def union(u, v):
         temp = u
         u = v
         v = temp
-    parent[v] = u
-    height[v] = -1
     if height[u] == height[v]:
         height[u] += 1
+    parent[v] = u
+    height[v] = -1
 
 
 for i in range(M):
