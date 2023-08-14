@@ -1,4 +1,4 @@
-package week1.soobin;
+package first.soobin;
 
 import java.io.*;
 import java.util.LinkedList;
