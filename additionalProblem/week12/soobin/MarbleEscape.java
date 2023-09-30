@@ -15,8 +15,8 @@ public class MarbleEscape {
         int count;
 
         Marbles(int[] red, int[] blue, int count) {
-            this.red = new int[] {red[0], red[1]};
-            this.blue = new int[] {blue[0], blue[1]};
+            this.red = red;
+            this.blue = blue;
             this.count = count;
         }
     }
