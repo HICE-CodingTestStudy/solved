@@ -27,14 +27,13 @@ public class DiceStack {
     }
 
     private static int getBottomFace(int n, int value) {
-        int i = 0;
-        for (; i < 6; i++)
+        for (int i = 0; i < 5; i++)
             if (dices[n][i] == value) return i;
-        return i;
+        return 5;
     }
 
     private static int dp(int n, int face) {
-        if (n == 0) return dp[n][face] = getMaxSideValue(n, face);
+        if (n == 0) return getMaxSideValue(n, face);
 
         if (dp[n][face] > 0) return dp[n][face];
 
