@@ -26,7 +26,7 @@ public class DiceStack {
         return max;
     }
 
-    private static int getBelowDicesFace(int n, int value) {
+    private static int getBottomFace(int n, int value) {
         int i = 0;
         for (; i < 6; i++)
             if (dices[n][i] == value) return i;
@@ -39,8 +39,8 @@ public class DiceStack {
         if (dp[n][face] > 0) return dp[n][face];
 
         int pair = pair(face);
-        int belowFace = getBelowDicesFace(n - 1, dices[n][pair]);
-        return dp[n][face] = dp(n - 1, belowFace) + getMaxSideValue(n, face);
+        int bottom = getBottomFace(n - 1, dices[n][pair]);
+        return dp[n][face] = dp(n - 1, bottom) + getMaxSideValue(n, face);
     }
 
     public static void main(String[] args) throws IOException {
