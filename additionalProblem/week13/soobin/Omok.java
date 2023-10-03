@@ -47,7 +47,7 @@ public class Omok {
         int count = 1;
 
         int nr = start[0] + move[0], nc = start[1] + move[1];
-        while (nr >= 0 && nr < 19 && nc >= 0 && nc < 19) {
+        while (isValid(nr, nc)) {
             if (board[nr][nc] != type) break;
 
             count++;
