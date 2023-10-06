@@ -21,7 +21,7 @@ public class PettingDog {
         long square = (long) Math.pow(k, 2);
 
         if (gap == square) return 2 * k - 1;
-        else if (gap > square && gap < square + k + 1) return 2 * k;
+        if (gap < square + k + 1) return 2 * k;
         return 2 * k + 1;
     }
 
