@@ -7,9 +7,7 @@ struct planet {
 	int psize, index;
 	planet(int ps, int i) :psize(ps), index(i) {}
 	planet() {}
-	bool operator<(const planet& p) {
-		return psize < p.psize;
-	}
+	bool operator<(const planet& p) { return psize < p.psize;}
 };
 
 int m, n, cnt, res;
