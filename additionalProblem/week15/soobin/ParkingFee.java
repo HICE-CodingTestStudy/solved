@@ -3,7 +3,7 @@ package week15.soobin;
 import java.util.*;
 
 public class ParkingFee {
-    private final int COMMON_OUT_TIME = 23 * 60 + 59;
+    private final int DEFAULT_OUT_TIME = 23 * 60 + 59;
 
     private Map<String, Integer> totalTimeOfCars = new HashMap<>();
     private Map<String, Boolean> lastStatusOfCars = new HashMap<>();
@@ -18,15 +18,15 @@ public class ParkingFee {
 
         for (String record : records) {
             StringTokenizer st = new StringTokenizer(record);
-            String timestampString = st.nextToken(), car = st.nextToken(), type = st.nextToken();
+            String timestamp = st.nextToken(), car = st.nextToken(), type = st.nextToken();
 
-            int timestamp = convertTimeFromString(timestampString);
+            int time = convertTimeFromString(timestamp);
             boolean isIn = type.equals("IN");
-            timestamp *= isIn ? -1 : 1;
+            time *= isIn ? -1 : 1;
 
             cars.add(car);
             lastStatusOfCars.put(car, isIn);
-            totalTimeOfCars.put(car, totalTimeOfCars.getOrDefault(car, 0) + timestamp);
+            totalTimeOfCars.put(car, totalTimeOfCars.getOrDefault(car, 0) + time);
         }
 
         return new ArrayList<>(cars);
@@ -40,7 +40,7 @@ public class ParkingFee {
             int totalTime = totalTimeOfCars.get(car);
             boolean isLastStatusIn = lastStatusOfCars.get(car);
 
-            if (isLastStatusIn) totalTime += COMMON_OUT_TIME;
+            if (isLastStatusIn) totalTime += DEFAULT_OUT_TIME;
 
             answer[i] = totalTime <= fees[0]
                     ? fees[1]
