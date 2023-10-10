@@ -23,24 +23,23 @@ bool equal(int i, int j, int k) {
 }
 
 int main() {
-
 	cin >> m >> n;
 
 	for (int i = 0, x; i < m; i++)
-		for (int j = 0; j < n; j++) {
+		for (int j = 1; j <= n; j++) {
 			cin >> x;
 			u[i][j] = planet(x, j);
 		}
 	
 	for (int i = 0; i < m; i++)
-		sort(u[i], u[i] + n);
+		sort(u[i], u[i] + n + 1);
 
 	for (int i = 0; i < m; i++)
 		for (int j = i + 1; j < m; j++) {
-			int k = 0;
-			for (; k < n; k++)
-				if (k && !equal(i, j, k) || u[i][k].index != u[j][k].index) break;
-			if (k == n) res++;
+			int k = 1;
+			for (; k <= n; k++)
+				if (!equal(i, j, k) || u[i][k].index != u[j][k].index) break;
+			if (k > n) res++;
 		}
 	cout << res;
 }
