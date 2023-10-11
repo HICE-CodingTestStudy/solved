@@ -77,8 +77,7 @@ public class Yakult {
         int answer = myStartingPoint == prev ? prev : Integer.MAX_VALUE;
         long prevCost = 0;
 
-        int nextIdx = 1;
-        for (; nextIdx < 10; nextIdx++) {
+        for (int nextIdx = 1; nextIdx < 10; nextIdx++) {
             int[] costs = dijkstra(prev);
 
             while (nextIdx < 10 && costs[salesPoints[nextIdx]] == Integer.MAX_VALUE && nextIdx < 10) nextIdx++;
