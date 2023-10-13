@@ -16,6 +16,7 @@ public class Migration {
     static int[] dy = {0, 0, -1, 1};
 
     static void init(){
+        //union된 애들을 초기화
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
                 Arrays.fill(graph[i][j], -1);
@@ -43,8 +44,10 @@ public class Migration {
         return true;
     }
 
+    //국경을 열기
     static boolean open() {
         boolean ret = false;
+        //모든 칸에 대해 사방을 검사해서 조건에 맞으면 union해준다
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
                 for (int k = 0; k < 4; k++) {
@@ -60,12 +63,16 @@ public class Migration {
                 }
             }
         }
+        //국경이 하나도 안열렸다면 false 하나라도 열렸다면 true
         return ret;
     }
 
     static void migration() {
+        //특정 그룹의 루트 부분에 해당 그룹의 모든 인원수를 저장함
         int[][] people = new int[N][N];
+        //특정 그룹의 그룹원수를 저장함
         int[][] count = new int[N][N];
+
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
                 int[] root = find(i, j);
