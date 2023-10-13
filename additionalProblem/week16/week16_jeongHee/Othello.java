@@ -52,6 +52,7 @@ public class Othello {
         else System.out.println("White");
     }
 
+    //특정 줄의 돌을 뒤집음
     static void changeColor(int startI, int startJ, int endI, int endJ, int direction, char color) {
         while (!(startI == endI && startJ == endJ)) {
             board[startI][startJ] = color;
@@ -67,10 +68,12 @@ public class Othello {
         queue.add(s);
         while (!queue.isEmpty()) {
             Stone now = queue.poll();
+            //뻗어져 나오다가 같은 색의 돌을 발견했을때 == 뒤집어야함
             if (now.color == s.color && !(now.i == s.i && now.j == s.j)) {
                 changeColor(s.i, s.j, now.i, now.j, now.lastDirection, s.color);
                 continue;
             }
+            //이번턴에 돌을 놓은 자리라면 팔방으로 다 퍼져야함
             if (now.lastDirection == -1) {
                 for (int i = 0; i < 8; i++) {
                     int nextI = now.i + dx[i];
@@ -83,6 +86,7 @@ public class Othello {
                 }
                 continue;
             }
+            //뻗어져 나오는 중이라면 해당 방향으로만 가야함
             int nextI = now.i + dx[now.lastDirection];
             int nextJ = now.j + dy[now.lastDirection];
             if (nextI < 0 || nextI >= 6 || nextJ < 0 || nextJ >= 6) continue;
