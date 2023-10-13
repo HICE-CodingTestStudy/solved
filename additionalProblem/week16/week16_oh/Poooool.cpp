@@ -23,7 +23,7 @@ void dfs(int x, int y, int h) {
 		int nx = x + dx[i], ny = y + dy[i];
 
 		if (pool[nx][ny] > h)
-			subMax = min(subMax, pool[nx][ny]);	// 현재보다 크면서 가장 작은 값이 물의 높이
+			subMax = min(subMax, pool[nx][ny]);  // 현재 높이보다 크면서 가장 작은 값이 물의 높이
 		else if (!visited[nx][ny]) {
 			dfs(nx, ny, h);
 			if (!can) return;
@@ -31,9 +31,15 @@ void dfs(int x, int y, int h) {
 	}
 }
 
-int main() {
-	cin >> N >> M;
+void setDFS() {
+	fill(&visited[0][0], &visited[50][51], false);
+	v.clear();
+	subMax = totalMax;
+	can = 1;
+}
 
+void Input() {
+	cin >> N >> M;
 	string s;
 	for (int i = 1; i <= N; i++) {
 		cin >> s;
@@ -42,14 +48,16 @@ int main() {
 			totalMax = max(totalMax, pool[i][j]);
 		}
 	}
+}
+
+int main() {
+
+	Input();
 
 	for (int i = 1; i <= N; i++)
 		for (int j = 1; j <= M; j++)
 			if (pool[i][j] < totalMax) {
-				fill(&visited[0][0], &visited[50][51], false);
-				v.clear();
-				subMax = totalMax;
-				can = 1;
+				setDFS();
 				dfs(i, j, pool[i][j]);
 				if (can)
 					for (int k = 0; k < v.size(); k++) {
