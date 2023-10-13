@@ -10,8 +10,7 @@ int dy[] = { 0, 1, 0, -1 };
 bool can, visited[51][51];
 int subMax, totalMax;
 
-// 현재보다 크면서 가장 작은 값이 물의 높이
-void dfs(int x, int y, int z) {
+void dfs(int x, int y, int h) {
 
 	if (!pool[x][y]) {
 		can = 0;
@@ -23,10 +22,10 @@ void dfs(int x, int y, int z) {
 	for (int i = 0; i < 4; i++) {
 		int nx = x + dx[i], ny = y + dy[i];
 
-		if (pool[nx][ny] > z)
-			subMax = min(subMax, pool[nx][ny]);
+		if (pool[nx][ny] > h)
+			subMax = min(subMax, pool[nx][ny]);	// 현재보다 크면서 가장 작은 값이 물의 높이
 		else if (!visited[nx][ny]) {
-			dfs(nx, ny, z);
+			dfs(nx, ny, h);
 			if (!can) return;
 		}
 	}
