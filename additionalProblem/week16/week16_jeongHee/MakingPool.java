@@ -1,8 +1,12 @@
 package additional;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class MakingPool {
     //https://www.acmicpc.net/problem/1113
@@ -13,10 +17,12 @@ public class MakingPool {
     static int ans = 0;
     static int[] dx = {-1, 1, 0, 0};
     static int[] dy = {0, 0, -1, 1};
+    static boolean[][] visited;
+    static int lastAns = 1;
 
     static void bfs(int i, int j, int maxWater) {
-        if (map[i][j] >= maxWater) return;
-        boolean[][] visited = new boolean[N][M];
+        boolean isValid = true;
+        lastAns = 1;
         visited[i][j] = true;
         Queue<int[]> queue = new LinkedList<>();
         queue.add(new int[]{i, j});
@@ -28,22 +34,20 @@ public class MakingPool {
                 int nextJ = now[1] + dy[k];
 
                 //외부와 닿은 경우 maxWater만큼은 못채움
-                if (nextI < 0 || nextJ < 0 || nextI >= N || nextJ >= M) return;
+                if (nextI < 0 || nextJ < 0 || nextI >= N || nextJ >= M) {
+                    isValid = false;
+                    continue;
+                }
                 if (visited[nextI][nextJ]) continue;
 
                 //maxWater만큼의 벽을 만난 경우 더이상 뻗지 않음
                 if (map[nextI][nextJ] >= maxWater) continue;
-                if (nextI == 0 || nextJ == 0 || nextI == N - 1 || nextJ == M - 1) return;
                 queue.add(new int[]{nextI, nextJ});
                 visited[nextI][nextJ] = true;
+                lastAns++;
             }
         }
-        for (int k = 0; k < N; k++) {
-            for (int l = 0; l < M; l++) {
-                ans += maxWater - map[i][j];
-                map[i][j] = maxWater;
-            }
-        }
+        if(isValid) ans += lastAns;
     }
 
     public static void main(String[] args) throws IOException {
@@ -60,12 +64,15 @@ public class MakingPool {
                 max = Math.max(max, map[i][j]);
             }
         }
-        for (int i = 1; i < N - 1; i++) {
-            for (int j = 1; j < M - 1; j++) {
-                for (int k = max; k > map[i][j]; k--) {
-                    int before = ans;
-                    bfs(i, j, k);
-                    if(ans!=before) break;
+        visited = new boolean[N][M];
+        for (int k = 2; k <= max; k++) {
+            for (int i = 0; i < N; i++) {
+                Arrays.fill(visited[i], false);
+            }
+            for (int i = 1; i < N - 1; i++) {
+                for (int j = 1; j < M - 1; j++) {
+                    if (!visited[i][j] && map[i][j] < k)
+                        bfs(i, j, k);
                 }
             }
         }
