@@ -21,28 +21,19 @@ def check(x, y, type, dir):
     flag = False
     nx = x; ny = y
     visited[nx][ny] = True
-    if(type % 2 == 1):
-        while(True):
-            nx += dx[dir]; ny += dy[dir]
-            if(nx < 0 or nx >= 7 or ny < 0 or ny >=7):
-                break
-            if(visited[nx][ny] or area[nx][ny] == '.'):
-                break
-            if(area[nx][ny] == 'B'):
-                flag = True
-                break
-            visited[nx][ny] = True
-    else:
-        while(True):
-            nx += dx[dir]; ny += dy[dir]
-            if(nx < 0 or nx >= 7 or ny < 0 or ny >=7):
-                break
-            if(visited[nx][ny] or area[nx][ny] == '.'):
-                break
-            if(area[nx][ny] == 'W'):
-                flag = True
-                break
-            visited[nx][ny] = True
+    while(True):
+        nx += dx[dir]; ny += dy[dir]
+        if(nx < 0 or nx >= 7 or ny < 0 or ny >=7):
+            break
+        if(visited[nx][ny] or area[nx][ny] == '.'):
+            break
+        if(area[nx][ny] == 'B' and type % 2 == 1):
+            flag = True
+            break
+        if(area[nx][ny] == 'W' and type % 2 == 0):
+            flag = True
+            break
+        visited[nx][ny] = True
 
     return flag
 
@@ -67,7 +58,6 @@ if __name__ == '__main__':
         print()
 
     print("White") if wSum > bSum else print("Black")
-
 
 
 
