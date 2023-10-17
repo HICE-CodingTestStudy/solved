@@ -32,7 +32,7 @@ pair<int, int> MinMaxQuery(int node, int l, int r, int Start, int End) {
 }
 
 int main() {
-  FIO;
+	FIO;
 	cin >> n >> m;
 
 	while (n > h) h *= 2;
