@@ -5,10 +5,9 @@ using namespace std;
 
 int n, ans, num = 1;
 map<string, string> m;
-string a, b, x, tp, prev;
+string a, b, x, tp, pre;
 
 int main() {
-	
 	while (1) {
 		cin >> n;
 		if (!n) break;
@@ -23,9 +22,9 @@ int main() {
 		x = tp;
     
 		while (!m.empty()) {
-			prev = x;
+			pre = x;
 			x = m[x];
-			m.erase(prev);
+			m.erase(pre);
 
 			if (tp == x) {
 				ans++;
@@ -34,7 +33,6 @@ int main() {
 			}
 		}
 
-		cout << num << " " << ans << endl;
-		num++;
+		cout << num++ << " " << ans << endl;
 	}
 }
