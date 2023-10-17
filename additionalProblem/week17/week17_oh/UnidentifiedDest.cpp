@@ -62,7 +62,7 @@ int main() {
 			dijkstra(g, graph); B2 = dist[pos[i]];
 			
 			if (C == A1 + must + A2 || C == B1 + must + B2)
-        		res.push(-pos[i]);
+        			res.push(-pos[i]);
 		}
 
 		while (!res.empty()) {
