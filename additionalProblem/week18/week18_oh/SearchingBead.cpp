@@ -7,30 +7,28 @@ vector<int> H[100], L[100];
 int n, m, a, b, ans, cnt;
 bool cant, visited[101];
 
+void setDFS() {
+	fill(visited, visited + 100, false);
+	cnt = cant = 0;
+}
+
 void dfs(int cur, vector<int>* HorL) {
 	visited[cur] = true;
 	cnt++;
-
 	if (cnt > (n + 1) / 2) {
 		ans++;
 		cant = true;
 		return;
 	}
 
-	for (int i = 0; i < HorL[cur].size(); i++) {
-		if (!visited[HorL[cur][i]]) dfs(HorL[cur][i], HorL);
+	for (auto x : HorL[cur]) {
+		if (!visited[x]) dfs(x, HorL);
 		if (cant) return;
 	}
 }
 
-void setDFS() {
-	fill(visited, visited + 100, false);
-	cnt = cant = 0;
-}
-
 int main() {
 	cin >> n >> m;
-
 	while (m--) {
 		cin >> a >> b;
 		H[a].push_back(b);  // a는 b보다 무거움
@@ -41,6 +39,5 @@ int main() {
 		setDFS(); dfs(i, H);
 		setDFS(); dfs(i, L);
 	}
-
 	cout << ans;
 }
