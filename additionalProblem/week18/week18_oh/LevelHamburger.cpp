@@ -12,18 +12,19 @@ void f(ll lv, ll len) {
 		ans++;
 		return;
 	}
-	
-	if (len - 1 == b[lv - 1]) {
+
+	len--;	// 가장 왼쪽 햄버거번 1개 빼주기
+	if (len == b[lv - 1]) {
 		ans += p[lv - 1];
-		f(lv - 1, len - b[lv - 1] - 1);
+		f(lv - 1, len - b[lv - 1]);
 	}
 
-	else if (len - 1 < b[lv - 1])
-		f(lv - 1, len - 1);
+	else if (len < b[lv - 1])
+		f(lv - 1, len);
 
 	else {
 		ans += p[lv - 1] + 1;
-		f(lv - 1, len - b[lv - 1] - 2);
+		f(lv - 1, len - b[lv - 1] - 1);	// 가운데 패티 1개 빼주기
 	}
 
 }
