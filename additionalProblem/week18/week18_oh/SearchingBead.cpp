@@ -20,7 +20,6 @@ void dfs(int cur, vector<int>* HorL) {
 		cant = true;
 		return;
 	}
-
 	for (auto x : HorL[cur]) {
 		if (!visited[x]) dfs(x, HorL);
 		if (cant) return;
@@ -34,7 +33,6 @@ int main() {
 		H[a].push_back(b);  // a는 b보다 무거움
 		L[b].push_back(a);  // b는 a보다 가벼움
 	}
-
 	for (int i = 1; i <= n; i++) {
 		setDFS(); dfs(i, H);
 		setDFS(); dfs(i, L);
