@@ -64,11 +64,11 @@ public class MoonRising {
     }
 
     private static boolean isKey(int r, int c) {
-        return (int) maze[r][c] >= (int) 'a' && (int) maze[r][c] <= (int) 'f';
+        return maze[r][c] >= 'a' && maze[r][c] <= 'f';
     }
 
     private static boolean isDoor(int r, int c) {
-        return (int) maze[r][c] >= (int) 'A' && (int) maze[r][c] <= (int) 'F';
+        return maze[r][c] >= 'A' && maze[r][c] <= 'F';
     }
 
     private static int escapeMaze(int[] start) {
