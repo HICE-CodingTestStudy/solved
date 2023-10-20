@@ -26,36 +26,27 @@ void bfs() {
 			int nx = p.x + dx[i], ny = p.y + dy[i];
 
 			if (!nx || !ny || nx > n || ny > m || dp[nx][ny][bitMask])
-        continue;
+				continue;
 			
-      dp[nx][ny][bitMask] = cnt + 1;
+			dp[nx][ny][bitMask] = cnt + 1;
 			char next = Map[nx][ny];
-            
-			// 출구
-			if (next == '1') {
+			
+			if (next == '1') {	// 출구
 				cout << cnt + 1;
 				return;
 			}
-
-			// 벽
-			else if (next == '#') continue;
-
-			// 문
-			else if (next >= 'A' && next <= 'F') {
+			else if (next == '#') continue;	// 벽
+			else if (next >= 'A' && next <= 'F') {	// 문
 				if (!(bitMask & (1 << next - 'A'))) continue;
 				
 				q.push({ Point(nx, ny), bitMask });
 				c.push(cnt + 1);
 			}
-
-			// 열쇠
-			else if (next >= 'a' && next <= 'f') {
+			else if (next >= 'a' && next <= 'f') {	// 열쇠
 				q.push({ Point(nx, ny), (bitMask | (1 << next - 'a')) });
 				c.push(cnt + 1);
 			}
-
-			// 빈 칸
-			else {
+			else {	// 빈 칸
 				q.push({ Point(nx, ny), bitMask });
 				c.push(cnt + 1);
 			}
