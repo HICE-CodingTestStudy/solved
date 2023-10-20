@@ -5,10 +5,8 @@ using namespace std;
 
 struct Point {
 	int x, y;
-	Point(int x, int y) :x(x), y(y) {}
-	Point() {}
+	Point(int x = 0, int y = 0) :x(x), y(y) {}
 };
-
 int n, m, x, y, dp[51][51][65];
 int dx[] = { 0,0,-1,1 }, dy[] = { -1,1,0,0 };
 char Map[52][52];
