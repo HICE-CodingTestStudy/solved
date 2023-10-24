@@ -9,7 +9,7 @@ int dx4[] = { -1, -1, 1, 1 }, dy4[] = { -1, 1, 1, -1 };
 bool c[52][52];
 vector<pair<int, int>> cur;
 
-void moveCloud(int dir, int dis) {
+void MoveCloud(int dir, int dis) {
 	vector<pair<int, int>> tmp;
 	fill(c[0], c[52], false);
 	for (int i = 0; i < cur.size(); i++) {
@@ -32,7 +32,7 @@ void moveCloud(int dir, int dis) {
 	cur.clear();
 }
 
-void nextCloud() {
+void NextCloud() {
 	for (int i = 1; i <= n; i++)
 		for (int j = 1; j <= n; j++)
 			if (A[i][j] > 1 && !c[i][j]) {
@@ -51,8 +51,8 @@ int main() {
 	cur.push_back({ n - 1,1 }); cur.push_back({ n - 1,2 });
 	while (m--) {
 		cin >> d >> s;
-		moveCloud(d, s);
-		nextCloud();
+		MoveCloud(d, s);
+		NextCloud();
 	}
 	for (int i = 1; i <= n; i++)
 		for (int j = 1; j <= n; j++)
