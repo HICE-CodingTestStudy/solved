@@ -45,7 +45,6 @@ public class JewelShopping {
     public int[] solution(String[] gems) {
         hs.addAll(Arrays.asList(gems));
         int type = hs.size();
-        if (type == 1) return new int[]{1, 1};
         hs.clear();
         for (int i = 0; i < gems.length; i++) {
             String gem = gems[i];
