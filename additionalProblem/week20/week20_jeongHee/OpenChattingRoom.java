@@ -24,16 +24,16 @@ public class OpenChattingRoom {
         ArrayList<String> ans = new ArrayList<>();
         for (String s : record) {
             String[] chats = s.split(" ");
-            if (chats[0].equals("Enter")) {
-                StringBuilder sb = new StringBuilder();
-                sb.append(hm.get(chats[1])).append(Message.Enter.kor);
-                ans.add(sb.toString());
-            }
-            if (chats[0].equals("Leave")) {
-                StringBuilder sb = new StringBuilder();
-                sb.append(hm.get(chats[1])).append(Message.Leave.kor);
-                ans.add(sb.toString());
-            }
+            StringBuilder sb = new StringBuilder();
+            sb.append(hm.get(chats[1]));
+
+            if (chats[0].equals("Enter"))
+                sb.append(Message.Enter.kor);
+            else if (chats[0].equals("Leave"))
+                sb.append(Message.Leave.kor);
+            else continue;
+
+            ans.add(sb.toString());
         }
         return ans;
     }
