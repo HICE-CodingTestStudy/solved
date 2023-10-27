@@ -4,12 +4,11 @@
 using namespace std;
 
 int R, C, r, c, m, s, d, z, ans;
-int dx[] = { 0, -1, 1, 0, 0 }, dy[] = { 0, 0, 0, 1, -1 };
+int dx[] = { 0, -1, 1, 0, 0 }, dy[] = { 0, 0, 0, 1, -1 }, dir[] = { 0, 2, 1, 4, 3 };
 vector<vector<int>> board(102, vector<int>(102, 0));
 
 void moveShark() {
 	vector<vector<int>> tmp(102, vector<int>(102, 0));
-
 	for (int i = 1; i <= R; i++)
 		for (int j = 1; j <= C; j++)
 			if (board[i][j]) {
@@ -18,18 +17,13 @@ void moveShark() {
 				z = board[i][j] / 100000;
 				r = i; c = j;
 
-				if (d == 1 || d == 2)
-					s %= ((R - 1) * 2);
-				else if (d == 3 || d == 4)
-					s %= ((C - 1) * 2);
+				if (d < 3) s %= ((R - 1) * 2);
+				else s %= ((C - 1) * 2);
 
 				while (s--) {
 					int nr = r + dx[d], nc = c + dy[d];
 					if (nr < 1 || nr > R || nc < 1 || nc > C) {
-						if (d == 1) d = 2;
-						else if (d == 2) d = 1;
-						else if (d == 3) d = 4;
-						else if (d == 4) d = 3;
+						d = dir[d];
 						nr = r + dx[d], nc = c + dy[d];
 					}
 					r = nr, c = nc;
@@ -55,7 +49,6 @@ int main() {
 				board[j][i] = 0;
 				break;
 			}
-
 		moveShark();
 	}
 	cout << ans;
