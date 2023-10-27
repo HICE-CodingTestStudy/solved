@@ -4,7 +4,7 @@
 using namespace std;
 
 int R, C, r, c, m, s, d, z, ans;
-int dx[] = { 0, -1, 1, 0, 0 }, dy[] = { 0, 0, 0, 1, -1 }, dir[] = { 0, 2, 1, 4, 3 };
+int dx[] = { 0, -1, 1, 0, 0 }, dy[] = { 0, 0, 0, 1, -1 }, changeD[] = { 0, 2, 1, 4, 3 };
 vector<vector<int>> board(102, vector<int>(102, 0));
 
 void moveShark() {
@@ -23,7 +23,7 @@ void moveShark() {
 				while (s--) {
 					int nr = r + dx[d], nc = c + dy[d];
 					if (nr < 1 || nr > R || nc < 1 || nc > C) {
-						d = dir[d];
+						d = changeD[d];
 						nr = r + dx[d], nc = c + dy[d];
 					}
 					r = nr, c = nc;
