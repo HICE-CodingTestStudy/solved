@@ -16,9 +16,7 @@ void moveShark() {
 				d = board[i][j] % 10;
 				z = board[i][j] / 100000;
 				r = i; c = j;
-
-				if (d < 3) s %= ((R - 1) * 2);
-				else s %= ((C - 1) * 2);
+				s %= (d < 3) ? (R - 1) * 2 : (C - 1) * 2;
 
 				while (s--) {
 					int nr = r + dx[d], nc = c + dy[d];
