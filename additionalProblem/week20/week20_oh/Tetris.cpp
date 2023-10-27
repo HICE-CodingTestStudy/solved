@@ -3,9 +3,8 @@
 #include <vector>
 using namespace std;
 
-int c, p, ans, h[101];
-vector<vector<int>> v[8] = {
-	{},
+int c, p, ans, H[101];
+vector<vector<int>> b[7] = {
 	{{0}, {0, 0, 0, 0}},
 	{{0, 0}},
 	{{0, 0, 1}, {0, -1}},
@@ -17,17 +16,17 @@ vector<vector<int>> v[8] = {
 
 int main() {
 	cin >> c >> p;
-
+    
 	for (int i = 0; i < c; i++)
-		cin >> h[i];
+		cin >> H[i];
 
-	for (auto x : v[p])
+	for (auto x : b[p - 1])
 		for (int i = 0; i <= c - x.size(); i++) {
 			bool ok = 1;
 			for (int j = 0; j < x.size(); j++)
-				if (h[i + j] != h[i] + x[j]) ok = false;
+				if (H[i + j] != H[i] + x[j]) ok = false;
 			if (ok) ans++;
 		}
-
+    
 	cout << ans;
 }
