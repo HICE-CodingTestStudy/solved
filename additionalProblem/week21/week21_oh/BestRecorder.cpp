@@ -1,9 +1,10 @@
 
 #include <iostream>
 #include <vector>
+
 using namespace std;
 
-int n, m, X, Y, ans, b[1000][1000];
+int n, m, ans, b[1000][1000];
 int dx[] = { -1,1,0,0 }, dy[] = { 0,0, -1,1 };
 bool cycle, safe[1000][1000];
 vector<pair<int, int>> v;
@@ -45,13 +46,10 @@ int main() {
 	for (int i = 0; i < n; i++)
 		for (int j = 0; j < m; j++)
 			if (!safe[i][j]) {
-				X = i, Y = j, cycle = 0;
-				v.clear();
+				cycle = 0; v.clear();
 				dfs(i, j);
-				if (cycle) {
-					for (int k = 0; k < v.size(); k++)
-						safe[v[k].first][v[k].second] = 1;
-				}
+				if (cycle)
+					for (auto t: v) safe[t.first][t.second] = 1;
 			}
 	cout << ans;
 }
