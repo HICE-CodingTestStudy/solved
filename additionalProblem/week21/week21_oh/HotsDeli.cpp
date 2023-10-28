@@ -27,5 +27,5 @@ int main() {
 		p %= MOD; m %= MOD;
 	}
 
-	cout << (p % MOD + MOD - m % MOD) % MOD;
+	cout << (p + MOD - m) % MOD;	// mod 연산 시 m > p 가능
 }
