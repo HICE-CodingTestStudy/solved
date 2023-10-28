@@ -1,15 +1,11 @@
 
 #include <iostream>
-#include <vector>
-
 using namespace std;
 
-int n, m, ans, b[1000][1000];
+int n, m, ans, b[1000][1000], v[1000][1000];
 int dx[] = { -1,1,0,0 }, dy[] = { 0,0, -1,1 };
-bool cycle, safe[1000][1000];
-vector<pair<int, int>> v;
 
-int convertChar(char c) {
+int dtoi(char c) {
 	if (c == 'U') return 0;
 	else if (c == 'D') return 1;
 	else if (c == 'L') return 2;
@@ -17,21 +13,16 @@ int convertChar(char c) {
 }
 
 void dfs(int x, int y) {
-	for (int i = 0; i < v.size(); i++) {
-		if (v[i] == make_pair(x, y)) { // 이미 방문경로에 들어있는 경우 사이클
-			ans++;
-			cycle = 1;
-			return;
-		}
-		else if (safe[v[i].first][v[i].second]) { // 세이프존 갈 수 있는 경우
-			cycle = 1;
-			return;
-		}
-	}
-	v.push_back({ x, y });
-
+	v[x][y] = -1;
 	int nx = x + dx[b[x][y]], ny = y + dy[b[x][y]];
-	dfs(nx, ny);
+    
+	if (v[nx][ny] == -1) {
+		ans++;
+		v[x][y] = 1;
+		return;
+	}
+	if (!v[nx][ny]) dfs(nx, ny);
+	v[x][y] = 1;
 }
 
 int main() {
@@ -40,16 +31,12 @@ int main() {
 	for (int i = 0; i < n; i++) {
 		cin >> s;
 		for (int j = 0; j < m; j++)
-			b[i][j] = convertChar(s[j]);
+			b[i][j] = dtoi(s[j]);
 	}
 
 	for (int i = 0; i < n; i++)
 		for (int j = 0; j < m; j++)
-			if (!safe[i][j]) {
-				cycle = 0; v.clear();
-				dfs(i, j);
-				if (cycle)
-					for (auto t: v) safe[t.first][t.second] = 1;
-			}
+			if (!v[i][j]) dfs(i, j);
+
 	cout << ans;
 }
