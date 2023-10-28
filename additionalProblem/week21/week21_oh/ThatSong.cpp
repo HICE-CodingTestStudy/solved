@@ -1,7 +1,6 @@
 
 #include <string>
 #include <vector>
-#include <iostream>
 using namespace std;
 
 vector<string> splitStr(string s) {  // ',' 기준으로 split
