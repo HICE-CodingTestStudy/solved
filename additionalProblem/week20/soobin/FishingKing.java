@@ -46,16 +46,39 @@ public class FishingKing {
             else dir--;
         }
 
-        public void move() {
-            int nr = current.row;
-            int nc = current.col;
+        private int handleDecreaseDirection(int n, int D) {
+            if (Math.abs(n) <= D - 1) {
+                n = -n;
+                changeDirection();
+            } else n = 2 * (D - 1) + n;
+            return n;
+        }
 
-            for (int i = 1; i <= v; i++) {
-                if (!isValidRow(nr + moves[dir][0]) || !isValidCol(nc + moves[dir][1]))
-                    changeDirection();
-                nr += moves[dir][0];
-                nc += moves[dir][1];
+        private int handleIncreaseDirection(int n, int D) {
+            if (n <= 2 * (D - 1)) {
+                n = 2 * (D - 1) - n;
+                changeDirection();
             }
+            else n = n - 2 * (D - 1);
+            return n;
+        }
+
+        private int handleRowOOI(int nr) {
+            if (dir == 0) return handleDecreaseDirection(nr, R);
+            return handleIncreaseDirection(nr, R);
+        }
+
+        private int handleColOOI(int nc) {
+            if (dir == 3) return handleDecreaseDirection(nc, C);
+            return handleIncreaseDirection(nc, C);
+        }
+
+        public void move() {
+            int nr = current.row + moves[dir][0] * v;
+            int nc = current.col + moves[dir][1] * v;
+
+            if (!isValidRow(nr)) nr = handleRowOOI(nr);
+            if (!isValidCol(nc)) nc = handleColOOI(nc);
 
             current.row = nr;
             current.col = nc;
