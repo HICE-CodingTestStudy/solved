@@ -48,7 +48,7 @@ string solution(string m, vector<string> musicinfos) {
         string totalMel = "";
         for (int i = 0; i < t / mel.size(); i++) totalMel += mel;
         for (int i = 0; i < t % mel.size(); i++) totalMel += mel[i];
-        melody.push_back(totalMel);
+        melody.push_back(totalMel);        // 재생시간 동안의 전체 멜로디 추가
     }
 
     int runT = 0;
