@@ -22,7 +22,7 @@ string shorten(string s) {  // X# -> x
     string res = "";
     for (auto c : s) {
         if (c == '#')
-            res[res.size() - 1] += 32; // #음은 소문자로 변경
+            res[res.size() - 1] += 32;
         else res += c;
     }
     return res;
