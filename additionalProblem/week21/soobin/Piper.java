@@ -1,9 +1,6 @@
 package week21.soobin;
 
 import java.io.*;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
 import java.util.StringTokenizer;
 
 public class Piper {
@@ -11,14 +8,6 @@ public class Piper {
         int r, c;
 
         Coordinate(int r, int c) { this.r = r; this.c = c; }
-
-        public boolean equals(Object obj) {
-            return r == ((Coordinate) obj).r && c == ((Coordinate) obj).c;
-        }
-
-        public int hashCode() {
-            return Objects.hash(r, c);
-        }
     }
     private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     private static final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
