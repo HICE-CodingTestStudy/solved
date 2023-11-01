@@ -2,7 +2,7 @@ package week21.soobin;
 
 public class MusicPlayedJustNow {
     private class MusicInfo {
-        String playedCode, name;
+        String playedChord, name;
         int duration;
 
         MusicInfo(String[] musicInfo) {
@@ -10,7 +10,7 @@ public class MusicPlayedJustNow {
             int end = parseTime(musicInfo[1]);
             this.duration = end - start;
             this.name = musicInfo[2];
-            this.playedCode = getWholeCode(convertMinorCode(musicInfo[3]));
+            this.playedChord = getWholeChord(convertSharpChord(musicInfo[3]));
         }
 
         private int parseTime(String start) {
@@ -18,21 +18,21 @@ public class MusicPlayedJustNow {
             return Integer.parseInt(split[0]) * 60 + Integer.parseInt(split[1]);
         }
 
-        private String getWholeCode(String code) {
-            if (duration <= code.length()) return code.substring(0, duration);
+        private String getWholeChord(String chord) {
+            if (duration <= chord.length()) return chord.substring(0, duration);
 
-            String playedCode = "";
-            int repeat = duration / code.length();
-            for (int i = 1; i <= repeat; i++) playedCode += code;
-            if (duration - repeat * code.length() > 0)
-                playedCode += code.substring(0, duration - repeat * code.length());
+            String playedChord = "";
+            int repeat = duration / chord.length();
+            for (int i = 1; i <= repeat; i++) playedChord += chord;
+            if (duration - repeat * chord.length() > 0)
+                playedChord= chord.substring(0, duration - repeat * chord.length());
 
-            return playedCode;
+            return playedChord;
         }
     }
 
-    private String convertMinorCode(String code) {
-        return code.replace("C#", "c")
+    private String convertSharpChord(String chord) {
+        return chord.replace("C#", "c")
                 .replace("D#", "d")
                 .replace("F#", "f")
                 .replace("G#", "g")
@@ -40,14 +40,14 @@ public class MusicPlayedJustNow {
     }
 
     public String solution(String m, String[] musicinfos) {
-        m = convertMinorCode(m);
+        m = convertSharpChord(m);
         String answer = "(None)";
         int maxDuration = 0;
 
         for (String musicInfo : musicinfos) {
             MusicInfo info = new MusicInfo(musicInfo.split(","));
 
-            if (info.playedCode.contains(m) && maxDuration < info.duration) {
+            if (info.playedChord.contains(m) && maxDuration < info.duration) {
                 answer = info.name;
                 maxDuration = info.duration;
             }
