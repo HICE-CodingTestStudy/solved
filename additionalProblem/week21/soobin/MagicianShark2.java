@@ -58,7 +58,6 @@ public class MagicianShark2 {
             if (!isValid(nr, nc)) dumped += sand;
             else map[nr][nc] += sand;
 
-            map[nr][nc] += sand;
             total += sand;
         }
 
