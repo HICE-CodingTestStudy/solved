@@ -52,14 +52,11 @@ public class MagicianShark2 {
         for (int[] spread : spreadSand[direction]) {
             int nr = row + spread[0];
             int nc = col + spread[1];
-            double ratio = spread[2] / 100.0;
+            double rate = spread[2] / 100.0;
 
-            int sand = ratio == 0 ? map[row][col] - total : (int) (map[row][col] * ratio);
-            if (!isValid(nr, nc)) {
-                dumped += sand;
-                total += sand;
-                continue;
-            }
+            int sand = rate == 0 ? map[row][col] - total : (int) (map[row][col] * rate);
+            if (!isValid(nr, nc)) dumped += sand;
+            else map[nr][nc] += sand;
 
             map[nr][nc] += sand;
             total += sand;
