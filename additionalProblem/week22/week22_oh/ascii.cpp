@@ -2,22 +2,19 @@
 #include <iostream>
 using namespace std;
 
-int h, w, flag;
+int h, w, W, flag;
 char c;
 double ans;
 
 int main() {
-    cin >> h >> w;
-    
-    for (int i = 0; i < h; i++)
-        for (int j = 0; j < w; j++) {
+	cin >> h >> w;
+    while (h--) {
+        W = w;
+        while (W--) {
             cin >> c;
-            if (c == '.')
-                ans = flag ? ans + 1 : ans;
-            else {
-                ans += 0.5;
-                flag = !flag;
-            }
+			if (c == '.') ans = flag ? ans + 1 : ans;
+			else ans += 0.5, flag = !flag;
         }
-    cout << ans;
+    }
+	cout << ans;
 }
