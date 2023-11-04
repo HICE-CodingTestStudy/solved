@@ -12,7 +12,7 @@ typedef struct fire {
 vector<fire> fireBall, newFire;
 vector<int> curFire[51][51];
 
-void moveFB() {
+void move() {
 	for (int i = 0; i < fireBall.size(); i++) {
 		if (fireBall[i].m) { 
 			for (int j = 0; j < fireBall[i].s; j++) {
@@ -68,7 +68,7 @@ int main() {
     
 	int ans = 0;
 	for (int i = 0; i < K; i++) {
-		moveFB();
+		move();
 		check();
 		for (int i = 1; i <= N; i++)
 			for (int j = 1; j <= N; j++)
