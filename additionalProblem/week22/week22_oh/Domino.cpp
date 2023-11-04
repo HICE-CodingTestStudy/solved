@@ -4,7 +4,7 @@
 #include <algorithm>
 using namespace std;
 
-int p, m, n, t, sum, ans, a[1001], b[1001];
+int p, m, n, f, sum, ans, a[1001], b[1001];
 vector<int> A, B;
 
 int main() {
@@ -15,7 +15,7 @@ int main() {
 	for (int i = 0; i < n; i++)
 		cin >> b[i];
 
-	t = 0;
+	f = 0;
 	for (int i = 0; i < m; i++)
 		if (a[i] <= p) {
 			A.push_back(a[i]);
@@ -30,12 +30,12 @@ int main() {
 				if (j == m) j = 0;
 
 				// 모든 조각
-				if (i == j && t) A.pop_back();
-				if (i == j && !t) t = 1;
+				if (i == j && f) A.pop_back();
+				if (i == j && !f) f = 1;
 			}
 		}
 
-	t = 0;
+	f = 0;
 	for (int i = 0; i < n; i++)
 		if (b[i] <= p) {
 			B.push_back(b[i]);
@@ -50,8 +50,8 @@ int main() {
 				if (j == n) j = 0;
 
 				// 모든 조각
-				if (i == j && t) B.pop_back();
-				if (i == j && !t) t = 1;
+				if (i == j && f) B.pop_back();
+				if (i == j && !f) f = 1;
 			}
 		}
 
