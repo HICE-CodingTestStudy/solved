@@ -14,8 +14,9 @@ vector<int> curFire[51][51];
 
 void move() {
 	for (int i = 0; i < fireBall.size(); i++) {
-		if (fireBall[i].m) { 
-			for (int j = 0; j < fireBall[i].s; j++) {
+		if (fireBall[i].m) {
+			int s = fireBall[i].s % N;
+			for (int j = 0; j < s; j++) {
 				fireBall[i].x += dx[fireBall[i].d];
 				fireBall[i].y += dy[fireBall[i].d];
 				if (!fireBall[i].x) fireBall[i].x = N;
