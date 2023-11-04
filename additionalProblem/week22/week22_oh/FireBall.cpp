@@ -3,7 +3,7 @@
 #include <vector>
 using namespace std;
 
-int N, M, K;
+int N, M, K, ans;
 int dx[] = { -1,-1,0,1,1,1,0,-1 };
 int dy[] = { 0,1,1,1,0,-1,-1,-1 };
 typedef struct fire {
@@ -66,7 +66,6 @@ int main() {
 		fireBall.push_back(x);
 	}
     
-	int ans = 0;
 	for (int i = 0; i < K; i++) {
 		move();
 		check();
@@ -77,7 +76,7 @@ int main() {
 		fireBall = newFire;
 		newFire.clear();
 	}
-    
+
 	for (int i = 0; i < fireBall.size(); i++)
 		ans += fireBall[i].m;
 	cout << ans;
