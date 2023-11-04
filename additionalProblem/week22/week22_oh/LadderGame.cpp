@@ -25,8 +25,8 @@ void bfs() {
 		for (int i = 1; i <= 6; i++) {
 			if (mov[cur + i])
 				q.push({ mov[cur + i], cnt + 1 });
-			else if
-				(!visited[cur + i]) q.push({ cur + i, cnt + 1 });
+			else if (!visited[cur + i])
+				q.push({ cur + i, cnt + 1 });
 		}
 	}
 }
