@@ -13,11 +13,9 @@ int main() {
 			s += j;
 		a[i] = a[i - 1] + s;
 	}
-
 	for (int i = 1; i <= n; i++)
 		for (int j = 1; j <= 120; j++)
-			if (i - a[j] >= 0)
-				dp[i] = min(dp[i], dp[i - a[j]] + 1);
+			if (i - a[j] >= 0) dp[i] = min(dp[i], dp[i - a[j]] + 1);
     
 	cout << dp[n];
 }
