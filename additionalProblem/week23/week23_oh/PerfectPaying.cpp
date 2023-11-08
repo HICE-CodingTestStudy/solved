@@ -4,6 +4,7 @@ typedef long long ll;
 using namespace std;
 
 ll n, a_gcd, b_gcd, x, y, a, b;
+pair<ll, ll> frac[51];	// 기약분수 저장
 
 ll GCD(ll a, ll b) {	// 최대공약수
 	if (!b) return a;
@@ -21,16 +22,16 @@ pair<ll, ll> f(ll a, ll b) {    // 기약분수
 
 int main() {
 	cin >> n;
-	pair<ll, ll> tmp[51];
-
+	
 	cin >> a >> b;
-	tmp[0] = f(a, b);
-	x = tmp[0].first, y = tmp[0].second;
+	frac[0] = f(a, b);
+	x = frac[0].first, y = frac[0].second;
+	
 	for (int i = 1; i < n; i++) {
 		cin >> a >> b;
-		tmp[i] = f(a, b);
-		x = GCD(x, tmp[i].first);
-		y = LCM(y, tmp[i].second);
+		frac[i] = f(a, b);
+		x = GCD(x, frac[i].first);
+		y = LCM(y, frac[i].second);
 	}
 	cout << x << " " << y;
 }
