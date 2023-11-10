@@ -13,16 +13,12 @@ void r(int x, int y, int d) {
 	}
 
 	for (int i = y; i <= y + 4 * d - 4; i++)
-		star[x][i] = '*';
+		star[x][i] = star[x + 4 * d - 2][i] = '*';
 	
-	for (int i = x; i <= x + 4 * d - 2; i++)
+	for (int i = x; i <= x + 4 * d - 2; i++) {
 		star[i][y] = '*';
-	
-	for (int i = y + 1; i <= y + 4 * d - 4; i++)
-		star[x + 4 * d - 2][i] = '*';
-	
-	for (int i = x + 2; i <= x + 4 * d - 2; i++)
-		star[i][y + 4 * d - 4] = '*';
+		if (i >= x + 2) star[i][y + 4 * d - 4] = '*';
+	}
 	
 	star[x + 2][y + 4 * d - 5] = '*';
 
