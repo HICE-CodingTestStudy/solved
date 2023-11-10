@@ -15,10 +15,8 @@ void f(int idx, int cnt) {
 			
 		bool flag = true;
 		for (int i = 1; i <= n; i++) 
-			if (!solved[i]) {
-				flag = false;
-				break;
-			}
+			flag = solved[i] && flag;
+		
 		if (flag) ans = min(ans, cnt);
 	}
 
