@@ -7,7 +7,6 @@ int n, m, o, p, ans = 15;
 vector<int> team, v[11];
 
 void f(int idx, int cnt) {
-	
 	if (cnt) {
 		bool solved[11] = { false };
 		for (int i = 0; i < cnt; i++)
