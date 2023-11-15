@@ -3,6 +3,7 @@
 using namespace std;
 
 int n, m, c, a, p[502][502];
+
 int dfs(int x, int y) {
     if (!p[x][y]) return 0;
     p[x][y] = 0;
