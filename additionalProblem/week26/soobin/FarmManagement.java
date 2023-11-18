@@ -62,8 +62,7 @@ public class FarmManagement {
                 int nr = cur[0] + move[0], nc = cur[1] + move[1];
                 if (!isValid(nr, nc) || visited[nr][nc] || farm[nr][nc] != farm[cur[0]][cur[1]]) continue;
 
-                if (!isMountainPeak(nr, nc)) isPeak = false;
-
+                isPeak = isPeak & isMountainPeak(nr, nc);
                 queue.add(new int[] {nr, nc});
                 visited[nr][nc] = true;
             }
