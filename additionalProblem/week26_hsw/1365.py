@@ -13,6 +13,14 @@ for i in range(N):
         LIS.append(L[0])
     if LIS[-1] < L[i]:    
         LIS.append(L[i])
-    else:    # LIS의 마지막 원소보다 작으면 이분탐색으로 얻은 인덱스의 값과 변경
+    else:   # LIS의 마지막 원소보다 작으면, LIS 배열속
+            #  어디에 들어갈 수 있는지 이분탐색으로 찾는다. 얻은 인덱스의 값과 변경
         LIS[bil(LIS,L[i])] = L[i]
 print(N-len(LIS))
+
+# 2 1 3 5 4 
+# 2
+# 1
+# 1 3
+# 1 3 5
+# 1 3 4
