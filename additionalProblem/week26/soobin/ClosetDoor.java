@@ -31,33 +31,24 @@ public class ClosetDoor {
         } catch (IOException e) {}
     }
 
-    private static void solution(int idx, int cost) {
+    private static void solution(int opened1, int opened2, int idx, int cost) {
         if (idx == K) {
             answer = Math.min(answer, cost);
             return;
         }
 
-        if (opened[0] == usage[idx] || opened[1] == usage[idx]) {
-            solution(idx + 1, cost);
+        if (opened1 == usage[idx] || opened2 == usage[idx]) {
+            solution(opened1, opened2, idx + 1, cost);
             return;
         }
 
-        int temp = opened[0];
-        // 0 번째 벽장을 닫는 경우
-        opened[0] = usage[idx];
-        solution(idx + 1, cost + Math.abs(temp - usage[idx]));
-        opened[0] = temp;
-
-        // 1 번째 벽장을 닫는 경우
-        temp = opened[1];
-        opened[1] = usage[idx];
-        solution(idx + 1, cost + Math.abs(temp - usage[idx]));
-        opened[1] = temp;
+        solution(usage[idx], opened2, idx + 1, cost + Math.abs(opened1 - usage[idx]));
+        solution(opened1, usage[idx], idx + 1, cost + Math.abs(opened2 - usage[idx]));
     }
 
     public static void main(String[] args) {
         parseInput();
-        solution(0, 0);
+        solution(opened[0], opened[1], 0, 0);
         printOutput();
     }
 }
