@@ -9,9 +9,9 @@ int main() {
 	fill(map[0], map[101], '#');
 	map[50][50] = '.';
 
-    x = y = minX = minY = maxX = maxY = 50;
+	x = y = minX = minY = maxX = maxY = 50;
     
-    cin >> n;
+	cin >> n;
 	while (n--) {
 		cin >> c;
 		if (c == 'R') d = (d + 3) % 4;
@@ -25,7 +25,7 @@ int main() {
 			maxY = max(maxY, y);
 			map[x][y] = '.';
 		}
-	}
+}
 
 	for (int i = minX; i <= maxX; i++) {
 		for (int j = minY; j <= maxY; j++)
