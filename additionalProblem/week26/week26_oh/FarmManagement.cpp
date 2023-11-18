@@ -8,7 +8,7 @@ bool v[102][72];
 
 int dfs(int x, int y, int t) {
 	if (map[x][y] != t) return map[x][y] < t;
-	if (v[x][y]) return 1;
+	else if (v[x][y]) return 1;
 	v[x][y] = 1;
 
 	int ret = 1;
