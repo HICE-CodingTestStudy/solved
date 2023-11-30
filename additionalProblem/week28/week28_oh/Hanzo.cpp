@@ -1,13 +1,15 @@
 
-#include <string>
 #include <vector>
+
 using namespace std;
 
 int d, maxDiff, arr[11];
 vector<int> ans = { -1 };
+vector<int> apeach;
 
 int cmp(vector<int> ryan, vector<int> apeach) {
     int rs = 0, as = 0;
+
     for (int i = 0; i < 11; i++)
         if (ryan[i] > apeach[i])
             rs += 10 - i;
@@ -17,8 +19,10 @@ int cmp(vector<int> ryan, vector<int> apeach) {
     return rs - as;
 }
 
-void dfs(int depth, int idx, vector<int> ryan, vector<int> apeach) {
+void dfs(int depth, int idx) {
     if (depth == d) {
+        vector<int> ryan(11, 0);
+        
         for (int i = 0; i < d; i++)
             ryan[10 - arr[i]]++;
             
@@ -33,16 +37,15 @@ void dfs(int depth, int idx, vector<int> ryan, vector<int> apeach) {
 
     for (int i = idx; i < 11; i++) {
         arr[depth] = i;
-        dfs(depth + 1, i, ryan, apeach);
+        dfs(depth + 1, i);
     }
 }
 
 vector<int> solution(int n, vector<int> info) {
-    vector<int> ryan(11, 0);
-    vector<int> apeach = info;
+    apeach = info;
     d = n;
     
-    dfs(0, 0, ryan, apeach);
+    dfs(0, 0);
 
     return ans;
 }
