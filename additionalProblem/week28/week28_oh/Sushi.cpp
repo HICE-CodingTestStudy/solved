@@ -13,7 +13,7 @@ int main() {
 		cin >> ary[i];
   
 	for (int i = 0; i < k; i++)
-    a += !check[ary[i]]++;
+   		 a += !check[ary[i]]++;
   
 	ans = a;
   
