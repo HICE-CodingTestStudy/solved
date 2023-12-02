@@ -5,9 +5,9 @@ using namespace std;
 long long a, b, d[55] = { 1 };
 
 long long cnt1(long long x) {
-	long long r = 0;
+	long long r = x & 1;
 
-	for (int i = 54; i >= 0; i--)
+	for (int i = 54; i; i--)
 		if (x & (1LL << i)) {
 			r += d[i - 1] + (x - (1LL << i) + 1);
 			x -= 1LL << i;
