@@ -9,7 +9,7 @@ int main() {
   
 	for (int i = 0; i < n; i++) {
 		cin >> ary[i];
-    l = max(l, ary[i]);
+    		l = max(l, ary[i]);
 		r += ary[i];
 	}
 
