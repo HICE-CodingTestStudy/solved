@@ -19,7 +19,7 @@ public class YeonSei {
         cost = new long[n + 1][n + 1];
         for (int i = 1; i < n + 1; i++) {
             for (int j = 1; j < n + 1; j++) {
-                cost[i][j] = Integer.MAX_VALUE;
+                cost[i][j] = 100000;
                 if (i == j) cost[i][j] = 0;
             }
         }
@@ -32,9 +32,9 @@ public class YeonSei {
             cost[v][u] = Math.min(1, cost[v][u]);
             if (b == 1) cost[v][u] = 0;
         }
-        for (int i = 1; i < n + 1; i++) {
-            for (int j = 1; j < n + 1; j++) {
-                for (int k = 1; k < n + 1; k++) {
+        for (int k = 1; k < n + 1; k++) {
+            for (int i = 1; i < n + 1; i++) {
+                for (int j = 1; j < n + 1; j++) {
                     if (i == j) continue;
                     if (cost[i][j] > cost[i][k] + cost[k][j])
                         cost[i][j] = cost[i][k] + cost[k][j];
