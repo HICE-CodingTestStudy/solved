@@ -9,11 +9,11 @@ route = [[1e9] * (n+1) for _ in range(n+1)]
 
 # 간선 정보 입력 및 route 배열 초기화
 for _ in range(m):
-    u, v, c = map(int, input().split())
-    if c:  # c가 1이면 양방향으로 갈 수 있는 간선
+    u, v, b = map(int, input().split())
+    if b:  # b가 1이면 양방향으로 갈 수 있는 간선
         route[u][v] = 0
         route[v][u] = 0
-    else:  # c가 0이면 단방향으로만 갈 수 있는 간선
+    else:  # b가 0이면 단방향으로만 갈 수 있는 간선
         route[u][v] = 0
         route[v][u] = 1
 
