@@ -6,7 +6,6 @@ using namespace std;
 int n, m, map[301][301], dp[301][301];
 
 void bfs() {
-
 	queue<pair<int, int>> q;
 	queue<int> cntq;
 	q.push({ 1, 1 });
