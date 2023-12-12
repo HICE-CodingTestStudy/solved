@@ -9,9 +9,9 @@ int main() {
 	cin >> n >> m;
 
 	for (; r < n; r++) {
-    scanf("%d", a + r);
+    		scanf("%d", a + r);
 		sum += a[r];
-    while (sum > m) sum -= a[l++];
+    		while (sum > m) sum -= a[l++];
 		ans = max(ans, sum);
 	}
 	cout << ans;
