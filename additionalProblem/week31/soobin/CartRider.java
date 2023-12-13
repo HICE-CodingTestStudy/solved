@@ -55,7 +55,6 @@ public class CartRider {
         queue.add(new Status(0, 0, map[0][0], 1));
         visited[0][0] = true;
 
-        int answer = Integer.MAX_VALUE;
         while (!queue.isEmpty()) {
             Status cur = queue.poll();
 
@@ -64,7 +63,7 @@ public class CartRider {
                     int nr = cur.r + move[0] * b, nc = cur.c + move[1] * b;
                     if (!isValid(nr, nc) || visited[nr][nc]) continue;
 
-                    if (nr == N - 1 && nc == M - 1) answer = Math.min(answer, cur.item);
+                    if (nr == N - 1 && nc == M - 1) return cur.item;
 
                     visited[nr][nc] = true;
                     queue.add(new Status(nr, nc, map[nr][nc],cur.item + 1));
@@ -72,7 +71,7 @@ public class CartRider {
             }
         }
 
-        return answer;
+        return 0;
     }
 
     public static void main(String[] args) {
