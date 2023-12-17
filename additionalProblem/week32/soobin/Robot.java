@@ -58,7 +58,7 @@ public class Robot {
     }
 
     private static void moveRobot() {
-        for (int i = N - 1; i >= 0; i--) {
+        for (int i = N - 2; i >= 0; i--) {
             Cell cell = belts.get(i);
             if (!cell.isRobot) continue;
 
@@ -71,7 +71,7 @@ public class Robot {
         }
     }
 
-    private static void addRobot() {
+    private static void addNewRobot() {
         Cell first = belts.get(0);
         if (first.durability > 0) first.addRobot();
     }
@@ -82,7 +82,7 @@ public class Robot {
         while (nonDurability < K) {
             moveCell();
             moveRobot();
-            addRobot();
+            addNewRobot();
             level++;
         }
 
