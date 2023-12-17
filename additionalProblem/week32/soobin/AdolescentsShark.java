@@ -140,7 +140,7 @@ public class AdolescentsShark {
 
             /* 나중에 이동하기 이전 상태로 되돌리기 위해 따로 저장해두기 */
             Fish[] prev = clonePrevFishes();
-            Fish prevShark = new Fish(shark.row, shark.col, shark.direction);
+            Fish prevShark = shark.copy();
 
             /* 상어 및 물고기 이동 */
             int idx = map[nr][nc]; // 먹어야 할 물고기 번호
@@ -156,8 +156,7 @@ public class AdolescentsShark {
             simulation(sum + idx);
 
             /* 이전 상태 되돌리기 */
-            shark.move(prevShark.row, prevShark.col);
-            shark.direction = prevShark.direction;
+            shark = prevShark;
             syncPrev(prev);
         }
 
