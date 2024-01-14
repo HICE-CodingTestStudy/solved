@@ -40,12 +40,6 @@ public class NemMo {
         map[next[0]][next[1]] = 1;
         if (isValid(next[0], next[1], map)) solution(next[0], next[1], map);
         map[next[0]][next[1]] = 0;
-//        for (int k = 0; k < N; k++) {
-//            for (int l = 0; l < M; l++) {
-//                if (k < i || (k==i && l <= j)) continue;
-//
-//            }
-//        }
     }
 
     public static void main(String[] args) {
