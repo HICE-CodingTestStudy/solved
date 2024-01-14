@@ -33,7 +33,7 @@ def bfs(a, b, d):
                 else:
                     if board[x][y] == 'M' or board[x][y] == 'Z':
                         continue
-                    if not fx and not fy:
+                    if not delx and not dely:
                         delx, dely = nx + 1, ny + 1
                     ndir = (d+2) % 4
                     if ndir not in temp:
