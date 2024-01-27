@@ -10,14 +10,13 @@ public class Mosquito {
     //https://www.acmicpc.net/problem/20440
     //니가 싫어
     static int N;
-    static int start = Integer.MAX_VALUE, end = 0;
     static PriorityQueue<Integer> in = new PriorityQueue<>();
     static PriorityQueue<Integer> out = new PriorityQueue<>();
 
     private static void solution() {
         int count = 0;
         int ans = 0;
-        int ansStart = end, ansEnd = start;
+        int ansStart = Integer.MAX_VALUE, ansEnd = 0;
         int now = in.peek();
         boolean isAnswerAppeared = false;
         while (true) {
@@ -54,8 +53,6 @@ public class Mosquito {
             StringTokenizer st = new StringTokenizer(bf.readLine());
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
-            start = Math.min(start, a);
-            end = Math.max(end, b);
             in.add(a);
             out.add(b);
         }
