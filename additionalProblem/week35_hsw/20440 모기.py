@@ -8,11 +8,11 @@ for _ in range(n):
     mos[Te] = mos.get(Te, 0) + 1
     mos[Tx] = mos.get(Tx, 0) - 1
 
-mos = sorted(mos.keys())
-maxmos, summos, flag = 0, 0, False
-maxmostime = [0, 0]
+mostime = sorted(mos.keys())
+maxmos, summos, flag = -1, 0, False
+maxmostime = [None, None]
 
-for time in mos:
+for time in mostime:
     summos += mos[time]
     if summos > maxmos:
         maxmos = summos
