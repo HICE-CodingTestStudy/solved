@@ -17,6 +17,6 @@ for s, e in pools:
     while s < e:
         s += l
         cnt += 1
-    cur = start
+    cur = s
 
 print(cnt)
