@@ -7,7 +7,7 @@ def solution(cap, n, deliveries, pickups):
         delivery += deliveries[i]
         pickup += pickups[i]
 
-        while have_to_deli > 0 or have_to_pick > 0:
+        while delivery > 0 or pickup > 0:
             delivery -= cap
             pickup -= cap
             answer += (n - i) * 2
