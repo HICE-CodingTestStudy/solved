@@ -1,6 +1,4 @@
 import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Stack;
 
 public class TreeOrder {
@@ -23,9 +21,8 @@ public class TreeOrder {
     private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     private static final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    private static Map<Integer, Integer> inOrderIndexes;
     private static Stack<Integer> postOrder;
-    private static int[] inOrder;
+    private static int[] inOrder, inOrderIndexes;
     private static Node root;
     private static int N;
 
@@ -49,11 +46,11 @@ public class TreeOrder {
         String[] inOrderInput = br.readLine().split(" ");
 
         inOrder = new int[N];
-        inOrderIndexes = new HashMap<>();
+        inOrderIndexes = new int[N + 1];
         for (int i = 0; i < N; i++) {
             int value = Integer.parseInt(inOrderInput[i]);
             inOrder[i] = value;
-            inOrderIndexes.put(value, i);
+            inOrderIndexes[value] = i;
         }
     }
 
@@ -68,7 +65,7 @@ public class TreeOrder {
     private static int initRoot() {
         int rootValue = postOrder.pop();
         root = new Node(rootValue);
-        return  inOrderIndexes.get(rootValue);
+        return  inOrderIndexes[rootValue];
     }
 
     private static void buildTree(int rootIdx, int leftIdx, int rightIdx, Node node) {
@@ -82,21 +79,21 @@ public class TreeOrder {
     }
 
     private static boolean isRightSubTreePossible(int rootIdx) {
-        return !postOrder.isEmpty() && inOrderIndexes.get(postOrder.peek()) > rootIdx;
+        return !postOrder.isEmpty() && inOrderIndexes[postOrder.peek()] > rootIdx;
     }
 
     private static void buildRightSubTree(int rootIdx, int rightIdx, Node node) {
-        int subTreeRootIdx = inOrderIndexes.get(postOrder.pop());
+        int subTreeRootIdx = inOrderIndexes[postOrder.pop()];
         node.right = new Node(inOrder[subTreeRootIdx]);
         buildTree(subTreeRootIdx, rootIdx + 1, rightIdx, node.right);
     }
 
     private static boolean isLeftSubTreePossible(int rootIdx) {
-        return !postOrder.isEmpty() && inOrderIndexes.get(postOrder.peek()) < rootIdx;
+        return !postOrder.isEmpty() && inOrderIndexes[postOrder.peek()] < rootIdx;
     }
 
     private static void buildLeftSubTree(int rootIdx, int leftIdx, Node node) {
-        int subTreeRootIdx = inOrderIndexes.get(postOrder.pop());
+        int subTreeRootIdx = inOrderIndexes[postOrder.pop()];
         node.left = new Node(inOrder[subTreeRootIdx]);
         buildTree(subTreeRootIdx, leftIdx, rootIdx - 1, node.left);
     }
