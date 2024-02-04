@@ -22,6 +22,7 @@ while q:
     x, y = q.popleft()
     if (x, y) == (n-1, m-1):
         ans = min(visited[x][y]-1, ans)
+        break
     if maps[x][y] == 2:
         ans = visited[x][y]-1 + (n-1-x) + (m-1-y)
 
