@@ -7,8 +7,8 @@ s = list(map(int, input().split()))
 s.sort()
 
 sum = 0
-for i in s
-    if sum + 1  i
+for i in s:
+    if sum + 1 < i:
         break
     sum += i
 print(sum + 1)
