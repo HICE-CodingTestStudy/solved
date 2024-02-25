@@ -36,7 +36,7 @@ public class DescendingNumber {
             solution(0, i + 1, 0);
         }
         Collections.sort(list);
-        if(N<list.size()) System.out.println(list.get(N));
+        if (N < list.size() + 1) System.out.println(list.get(N - 1));
         else System.out.println(-1);
     }
 }
