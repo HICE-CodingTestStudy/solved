@@ -2,60 +2,46 @@ import java.io.*;
 import java.util.ArrayDeque;
 
 public class Main {
-    static ArrayDeque<Character> deque = new ArrayDeque<>();
-    static String input;
-    static int X, man, woman, ans;
+    static int N;
+    static String s;
 
-    static boolean solution(char gender, int first, int second) {
-        first++;
-        if (Math.abs(first - second) > X && !deque.isEmpty()) {
-            char next = deque.peek();
-            first--;
-            if (next != gender) {
-                deque.poll();
-                deque.offerFirst(gender);
-                second++;
-            } else {
-                ans = first + second;
-                return false;
+    static boolean isValid(int w, int m, int index) {
+        if (s.charAt(index) == 'M') m++;
+        else w++;
+        return (Math.abs(w - m) <= N);
+    }
+
+    static int solution() {
+        int first = -1;
+        int m = 0, w = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (isValid(w, m, i)) {
+                if (s.charAt(i) == 'M') m++;
+                else w++;
+                continue;
             }
-        } else if (Math.abs(first - second) > X && deque.isEmpty()) {
-            first--;
-            ans = first + second;
-            return false;
+            if (first == -1) {
+                first = i;
+                continue;
+            }
+            if (isValid(w, m, first)) {
+                if (s.charAt(i) == 'M') m++;
+                else w++;
+                i--;
+                first = -1;
+                continue;
+            }
+            return m + w;
         }
-        if (gender == 'M') {
-            man = first;
-            woman = second;
-        } else {
-            man = second;
-            woman = first;
-        }
-        ans = man + woman;
-        return true;
+        if (first == -1) return m + w;
+        if (isValid(w, m, first)) return w + m + 1;
+        return m + w;
     }
 
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
-        X = Integer.parseInt(br.readLine());
-        input = br.readLine();
-        for (int i = 0; i < input.length(); i++) {
-            deque.offerLast(input.charAt(i));
-        }
-        while (!deque.isEmpty()) {
-            char gender = deque.poll();
-            if (gender == 'M') {
-                if (!solution(gender, man, woman)) break;
-            } else {
-                if (!solution(gender, woman, man)) break;
-            }
-        }
-        StringBuilder sb = new StringBuilder();
-        sb.append(woman + man);
-        bw.write(sb.toString());
-        bw.flush();
-        bw.close();
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        N = Integer.parseInt(bf.readLine());
+        s = bf.readLine();
+        System.out.println(solution());
     }
 }
