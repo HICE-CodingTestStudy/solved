@@ -60,6 +60,14 @@ public class ColorBall {
     }
 
     private static void solution() {
+        /*
+        * for (int i = 1; i < N; i++)
+        *   int[] ball = colorBalls.get(i);
+        *   int idx = i - 1;
+        *   ...
+        *
+        * 위 코드는 왜 안되지..?
+         */
         for (int[] ball : colorBalls) {
             int idx = findSmallerBall(ball[SIZE]);
             int idxByColor = findSmallerBallByColor(ball[COLOR], ball[SIZE]);
