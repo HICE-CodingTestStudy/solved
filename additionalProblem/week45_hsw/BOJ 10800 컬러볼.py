@@ -11,7 +11,7 @@ if __name__ == '__main__':
         c, s = map(int, input().split())
         balls.append([c, s, i])
     balls.sort(key=lambda x: x[1])
-    print(balls)
+    #print(balls)
     
     ans = defaultdict(int)
     size_sum = defaultdict(int)
