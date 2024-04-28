@@ -1,4 +1,4 @@
-# BOJ 3109 »§Áý
+# BOJ 3109 ë¹µì§‘
 import sys
 input = sys.stdin.readline
 
