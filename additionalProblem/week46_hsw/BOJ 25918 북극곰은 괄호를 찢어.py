@@ -1,4 +1,4 @@
-# BOJ 25918 ºÏ±Ø°õÀº °ıÈ£¸¦ Âõ¾î
+# BOJ 25918 ë¶ê·¹ê³°ì€ ê´„í˜¸ë¥¼ ì°¢ì–´
 import sys
 input = sys.stdin.readline
 
