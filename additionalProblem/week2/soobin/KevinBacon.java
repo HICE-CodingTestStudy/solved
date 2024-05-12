@@ -1,4 +1,4 @@
-package week2.soobin;
+package second.soobin;
 
 import java.io.*;
 import java.util.*;
