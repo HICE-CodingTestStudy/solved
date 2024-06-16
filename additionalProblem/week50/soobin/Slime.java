@@ -28,8 +28,6 @@ public class Slime {
     }
 
     private static long solution() {
-        if (N == 1) return 1;
-
         long answer = 1;
         while (slimes.size() > 1) {
             long newSlime = slimes.poll() * slimes.poll();
