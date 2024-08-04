@@ -36,7 +36,7 @@ if __name__ == "__main__":
                 new_val = calc(dp[i - 1][0], options[i - 1][k])
                 if new_val > 0:
                     dp[i][0] = max(dp[i][0], new_val)
-                    dp[i][1] = max(dp[i][1], new_val)
+                    # dp[i][1] = max(dp[i][1], new_val)
 
             # 이전 상태에서 광고를 본 경우
             if dp[i - 1][1] != INF:
