@@ -16,7 +16,7 @@ def dfs(day, tiger, last_ddeok):
             result = dfs(day + 1, tiger + ddeok + " ", ddeok_num)
             if result:
                 return result
-            visited[day][ddeok_num] = False
+
     return None
 
 
