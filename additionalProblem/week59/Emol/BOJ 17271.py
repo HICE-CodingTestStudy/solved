@@ -7,7 +7,6 @@ MOD = 1_000_000_007
 
 if __name__ == "__main__":
     n, m = map(int, input().split())
-    d = n // m
 
     dp = [0] * (n + 1)
     dp[0] = 1
