@@ -16,7 +16,7 @@ public class Arm {
             int s = start.charAt(i) - '0';
             int e = end.charAt(i) - '0';
             if(s!=e) return count;
-            if(s==8) count++;
+            if(s==8)ㄹ count++;
         }
         return count;
     }
